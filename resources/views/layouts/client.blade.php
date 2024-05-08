@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,11 +26,11 @@
           </div>
         </div>
        </div>
-       
+       <x-component.navbar/>
     </main>
     @include('clients.blocks.footer')
     <script src="{{asset('assets/clients/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/clients/js/custom.js')}}"></script>
 
 </body>
-</html>
+</html> -->
