@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - UNICODE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
     <link rel="stylesheet" href="{{asset('assets/clients/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/clients/css/style.css')}}">
 </head>
 <body>
-    @include('clients.blocks.header')
+    <x-component.header/>
+    <x-component.slide-img/>
     <main class="py-5">
        <div class="container">
          <div class="row">
@@ -29,8 +33,7 @@
        
     </main>
     @include('clients.blocks.footer')
-    <script src="{{asset('assets/clients/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/clients/js/custom.js')}}"></script>
+   
 
 </body>
 </html>
