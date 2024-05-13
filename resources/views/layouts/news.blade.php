@@ -15,6 +15,7 @@
         <div class="col-4">
         <aside>
                 @section('sidebar')
+             
                 @show
             </aside>
         </div>
@@ -25,7 +26,7 @@
           </div>
         </div>
        </div>
-       <x-component.navbar/>
+       <x-component.news/>
     </main>
     @include('clients.blocks.footer')
     <script src="{{asset('assets/clients/js/bootstrap.min.js')}}"></script>
