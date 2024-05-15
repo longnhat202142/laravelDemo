@@ -32,6 +32,7 @@
        </div>
        
     </main>
+    <x-component.ads/>
     @include('clients.blocks.footer')
    
 
