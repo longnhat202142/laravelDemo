@@ -13,6 +13,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('news')}}">Tin tức</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('newdetails')}}">Chi tiết tin tức</a>
+                </li>
            
             </ul>
         </div>

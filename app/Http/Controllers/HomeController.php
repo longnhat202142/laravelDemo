@@ -10,9 +10,9 @@ class HomeController extends Controller
     public $data =[];
     public function index(){
         $this->data['title'] = 'Phần nội dung';
-      $user= DB::select('select * from nguoidung where tennguoidung =  :tennguoidung ',[
-        'tennguoidung' => 'nhat'
-      ]);
+    //   $user= DB::select('select * from nguoidung where tennguoidung =  :tennguoidung ',[
+    //     'tennguoidung' => 'nhat'
+    //   ]);
     //   dd($user);
         return view('clients.home',$this->data);
     }

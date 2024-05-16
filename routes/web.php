@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\NewController;
+use App\Http\Controllers\NewDetailsController;
 use Illuminate\Support\Facades\DB;
 
 // Bài 2: Client Routes
@@ -71,4 +72,5 @@ Route::get('/login',[UserController::class,'showlogin'])->name('login');
 Route::post('/login',[UserController::class,'login']);
 
 Route::get('/news',[NewController::class,'index'])->name('news');
+Route::get('/new-details',[NewDetailsController::class,'index'])->name('newdetails');
 

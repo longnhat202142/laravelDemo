@@ -1,0 +1,139 @@
+.box-body {
+    display: flex;
+}
+
+.button-see {
+    text-decoration: none;
+    background-color: #003affb3;
+    padding: 10px;
+    font-size: 600;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 5px;
+    color: #fffffff2;
+    margin: auto;
+    position: absolute;
+    bottom: 10px;
+    right: 50%;
+}
+
+.box-header {
+    position: relative;
+    padding-bottom: 50px;
+}
+
+.content-nd {
+    text-align: justify;
+    padding-right: 10px;
+}
+
+.box-header-bottom {
+    position: relative;
+    margin-top: 100px;
+    display: inline-block;
+}
+
+.box-title {
+    position: absolute;
+    top: -70px;
+    right: 45%;
+}
+.see-two {
+    margin-top: 20px;
+    position: absolute;
+    bottom: -70px;
+}
+
+.carousel-css {
+    margin-top: 100px;
+}
+
+.box-title::after {
+    content: '';
+    width: 50%;
+    height: 2px;
+    margin-top: 10px;
+    background: #143980;
+}
+.module-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px 100px;
+}
+
+.module-sidebar-div {
+    background: gainsboro;
+    position: absolute;
+    top: 35%;
+    margin: auto;
+    padding: 10px;
+    width: 350px;
+    right: 30px;
+}
+
+.centered-heading {
+    text-align: center;
+}
+
+h4 {
+    width: 350px; /* Điều chỉnh kích thước theo ý muốn */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.item-bottom {
+    width: 350px; /* Điều chỉnh kích thước theo ý muốn */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-middle {
+    font-weight: 600;
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+.box-straight-line {
+    position: relative;
+    text-align: center;
+    padding: 10px 0;
+    top: -45px;
+    width: 100%;
+}
+
+.box-straight-line::before {
+    content: '';
+    position: absolute;
+    top: 110%;
+    left: 0;
+    right: 0;
+    border-top: 1px solid black;
+}
+
+.box-straight-line::after {
+    content: '';
+    position: absolute;
+    top: 0%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-top: 1px solid black;
+}
+
+.image {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.div-image {
+    width: 100%;
+}
+
+.text-image {
+    text-align: center;
+    margin-left: 10%;
+}
