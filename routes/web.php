@@ -12,6 +12,16 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\DB;
 
 
+Route::prefix('admin')->group(function () {
+  Route::get('/thongbao', function(){
+    return view('admin.content.thongbao');
+  })->name('admin');
+  Route::get('/add', function(){
+    return view('admin.add');
+  })->name('admin.add');
+});
 Route::get('/', function(){
   return view('components.component.footer');
 });
+Route::get('/test',[TestController::class, 'test'])->name('test');
+

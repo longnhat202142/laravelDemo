@@ -14,38 +14,34 @@
                 <a href="{{ route('admin.add')}}" class="btn btn-outline-primary mb-3">Bổ sung</a>
             </div>
           </nav>
+        
         <table class="table table-bordered">
             <thead>
                 <tr class="table-head">
-                    <th>MaDanhMuc</th>
-                    <th>TieuDe</th>
-                    <th>ThuTuHienThi</th>
-                    <th>TrangThai</th>
-                    <th>Video</th>
-                    <th>Anh</th>
+                    <th>STT</th>
+                    <th>Tên thông báo</th>
+                    <th>Thời điểm tạo</th>
+                    <th>Người tạo</th>
+                    <th>Chuyên mục</th>
                     <th>Thao tác</th>
                 </tr>
             </thead>
             <tbody>
-            @foreach ($query as $key=>$item)
                 <tr>
-                    <td>{{$item->MaDanhMuc}}</td>
-                    <td>{{$item->TieuDe}}</td>
-                    <td>{{$item->ThuTuHienThi}}</td>
-                    <td>{{$item->TrangThai}}</td>
-                    <td>{{$item->Video}}</td>
-                    <td>{{$item->Anh}}</td>
+                    <td>1</td>
+                    <td>Kết quả sơ tuyển đề xuất đề tài cấp Bộ học Kỳ 1</td>
+                    <td>11-03-2024</td>
+                    <td>Adminitr</td>
+                    <td>Khoa học công nghệ</td>
                     <td class="actions">
                         <a href="{{ route('admin.add')}}" class="btn btn-outline-info text-decoration-none"><i class="fa-regular fa-pen-to-square"></i></a>
                         <a href="#" class="btn btn-outline-warning text-decoration-none"><i class="fa-regular fa-eye"></i></a>
                         <a href="#" class="btn btn-outline-danger text-decoration-none"><i class="fa-regular fa-trash-can"></i></a>
                     </td>
                 </tr>
-            @endforeach
                 <!-- Repeat similar rows as needed -->
             </tbody>
         </table>
     </div>
 </div>
 @endsection
-

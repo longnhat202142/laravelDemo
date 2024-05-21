@@ -11,9 +11,131 @@
     <title>Document</title>
 </head>
 <body>
+
+  {{-- Thông tin tuyển dụng --}}
+    
+    <div class="news-list">
+      <div class="container">
+        <div class="title">
+          <p>THÔNG TIN TUYỂN DỤNG</p>
+          <div class="hr"></div>
+        </div>
+        <div class="row">
+          @for ($i = 0; $i < 16; $i++)
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="img"><a href=""><img src="https://husc.edu.vn/images_main/announcements.jpg" alt=""></a></div>
+                <div class="content-list">
+                  <h4><a class="text-decoration-none" href="#">Kết quả trúng tuyển hợp đồng giao khoán năm 2023</a></h4>
+                  <div class="time">
+                    <span>
+                      <img src="	https://husc.edu.vn/images/icon-calendar.png" alt="">
+                      13-07-2023
+                    </span>
+                  </div>
+                  <hr style="color: #aca9a9">
+                  <div class="decription" style="margin-bottom: 40px">
+                    <p>Hiệu trưởng Trường ĐHKH thông báo kết quả trúng tuyển và tuyển dụng vào các vị trí làm việc là giáo viên thuộc Trường THPT chuyên Khoa học Huế như sau:</p>
+                  </div>
+                </div>
+              </div>
+              @endfor
+        </div>
+        <nav aria-label="Page navigation example" class="pag">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    
+  {{-- end Thông tin tuyển dụng --}}
+
+    {{-- trang Thông báo --}}
+      <div class="news-all">
+        <div class="container">
+          <div class="row main">
+            <div class="col-8">
+              <div class="card ">
+                <div class="card-body">
+                  <div class="card-title">CÁC THÔNG BÁO MỚI NHẤT
+                    <div class="hr"></div>
+                  </div>
+                  <div class="news-content">
+                  @for ($i = 0; $i < 6; $i++)
+                    <div class="item">
+                      <i class="fa-regular fa-file-lines"></i>
+                      <div class="content">
+                          <a class="text-decoration-none" href="https://husc.edu.vn/announcements.php?readmore=2598">
+                            Lịch bảo vệ luận án tiến sĩ cấp ĐHH của NCS Nguyễn Thị Anh Thư</a>
+                          <div class="time" style="color: #333333"><img src="https://husc.edu.vn/images/icon-calendar.png" alt=""> 07-05-2024</div>
+                          <div class="post-place">
+                            <small style="color: #333333" >Được đăng ở:&nbsp; <br>
+                              <a class="text-decoration-none" style="color: #333333; font-weight: 350" href="https://husc.edu.vn/saudaihoc/announcements.php?readmore=2598">Phòng đào tạo sau đại học</a>
+                            </small></div>
+                            <hr style="margin: 10px 0; background-color: #aca9a9">
+                          </div>  
+                      </div>
+                      @endfor
+                    </div>
+                </div>
+              </div>
+              <nav aria-label="Page navigation example" class="pag">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="col-4 sidebar-all">
+              <div class="card">
+                <div class="card-body" style="background-color: #f6f6f6">
+                  <div class="card-title">CHUYÊN MỤC</div>
+                  <ul>
+                  @for ($i = 0; $i < 13; $i++)
+                    <li style=" list-style-type: none;">
+                      <a class="text-decoration-none cm" href="#">Đào tạo Đại học & Công tác Sinh viên</a>
+                    </li>
+                  @endfor
+                  </ul>
+                  <hr style="color: #aca9a9">
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    {{-- end trang thông báo --}}
   
     {{-- Thông báo và video --}}
-      <div class="container border">
+      {{-- <div class="container border">
         <div class="row">
           <div class="col-sm-6">
             @for ($i = 0; $i <3; $i++)
@@ -71,11 +193,11 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
     {{-- end Thông báo và video --}}
   
     {{-- Mô tả --}}
-    {{-- <div class="all">
+   {{-- <div class="all">
         <div class="container">
           <div class="content-de">
             <div class="text">
@@ -113,36 +235,8 @@
             <div class="img" style="background-image:url('https://husc.edu.vn/images/img_reason1.jpg')"> </div>
           </div>
         </div>
-    </div> --}}
+    </div --}}
         {{-- end Mô tả --}}
-
-    {{-- banner --}}
-      {{-- <div id="demo" class="carousel slide" data-bs-ride="carousel">
-        <!-- The slideshow/carousel -->
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="https://husc.edu.vn/images/weblinks/20190508094321_banner_citc.png" alt="Los Angeles" >
-            <img src="https://husc.edu.vn/images/weblinks/20190508094321_banner_citc.png" alt="Los Angeles" >
-            <img src="https://husc.edu.vn/images/weblinks/20190508094321_banner_citc.png" alt="Los Angeles" >
-          </div>
-          <div class="carousel-item">
-            <img src="https://husc.edu.vn/images/weblinks/20190508094118_gishusc_2010_ver_21.gif" alt="Chicago" >
-          </div>
-          <div class="carousel-item">
-            <img src="https://husc.edu.vn/images/weblinks/20190508093927_link_khoamt.gif" alt="New York">
-          </div>
-        </div>
-        
-        <!-- Left and right controls/icons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
-      </div> --}}
-    
-    {{-- endbanner --}}
 
     {{-- footer --}}
     {{-- <footer class="text-white text-center text-lg-start" style="background-color: #143980">
