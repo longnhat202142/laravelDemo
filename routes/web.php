@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\NewDetailsController;
+use App\Http\Controllers\Admin\LoaitinController;
 use Illuminate\Support\Facades\DB;
 
 // Bài 2: Client Routes
@@ -74,3 +75,19 @@ Route::post('/login',[UserController::class,'login']);
 Route::get('/news',[NewController::class,'index'])->name('news');
 Route::get('/new-details',[NewDetailsController::class,'index'])->name('newdetails');
 
+
+// Đăng nhập với tài khoản CSDL 
+
+Route::get('/login',[UserController::class,'showlogin'])->name('login');
+Route::post('/login',[UserController::class,'login']);
+
+
+
+Route::prefix('/loaitin')->name('loaitin.')->group(function(){
+
+  Route::get('/',[LoaitinController::class,'index'])->name('index');
+
+  Route::get('/add',[LoaitinController::class,'add'])->name('add');
+
+  Route::post('/add',[LoaitinController::class,'postAdd'])->name('postAdd');
+});

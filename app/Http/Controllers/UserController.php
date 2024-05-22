@@ -25,7 +25,17 @@ class UserController extends Controller
 
         if ($user) {
             // Authentication passed
-            return redirect()->intended('/'); // Redirect authenticated user to homepage
+           $request->session()->put('user', $user);
+             //$request->session()->put('user', $user);
+             if ($request->session()->has('user'))
+             {
+                dd($request->session()->get('user'));
+             }
+             else 
+            return 'Không có USER';
+            // return view('clients.home'); // Redirect authenticated user to homepage
+
+            
         } else {
             // Authentication failed
           

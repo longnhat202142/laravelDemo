@@ -8,13 +8,21 @@ class HomeController extends Controller
 {
     //Action index()
     public $data =[];
-    public function index(){
+    public function index(Request $request){
         $this->data['title'] = 'Phần nội dung';
-    //   $user= DB::select('select * from nguoidung where tennguoidung =  :tennguoidung ',[
-    //     'tennguoidung' => 'nhat'
-    //   ]);
-    //   dd($user);
-        return view('clients.home',$this->data);
+         
+        
+         //$user = $request->session()->get('user');
+         if ($request->session()->has('user')){
+             echo 'Biến ss'+ $request->session()->get('user');
+         }
+
+        
+        else
+        {
+            return 'Không có USER';
+        }
+       // return view('clients.home',$this->data);
     }
 
     public function products(){
