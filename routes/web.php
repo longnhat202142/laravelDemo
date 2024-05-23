@@ -15,6 +15,11 @@ use App\Http\Controllers\NewDetailsController;
 use App\Http\Controllers\Admin\LoaitinController;
 use Illuminate\Support\Facades\DB;
 
+
+Route::get('/', function(){
+  return view('components.component.footer');
+});
+
 // Bài 2: Client Routes
 Route::prefix('category')->group(function(){
 
