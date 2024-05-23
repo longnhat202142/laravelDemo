@@ -46,4 +46,18 @@ class LoaitinController extends Controller
       $this->loaitin->add_Loaitin($dataInsert);
       return redirect()->route('loaitin.index');
     }
+
+
+    public function getEdit($id){
+         $title ='Cập nhật người dùng';
+         $this->loaitin = new loaitin();
+        if (!empty($id)) {
+            $getLoaitin = $this->loaitin->getID_Loaitin($id);
+            dd($getLoaitin);
+        } 
+        else {
+            return redirect()->route('loaitin.index');
+        }
+        return view('Admin.loaitin.edit',compact('title'));
+    }
 }

@@ -90,4 +90,8 @@ Route::prefix('/loaitin')->name('loaitin.')->group(function(){
   Route::get('/add',[LoaitinController::class,'add'])->name('add');
 
   Route::post('/add',[LoaitinController::class,'postAdd'])->name('postAdd');
+
+  Route::get('/edit/:{IDLoai}',[LoaitinController::class,'getEdit'])->name('edit');
+
+  Route::post('/edit/:{id}',[LoaitinController::class,'postEdit'])->name('post-edit');
 });

@@ -20,4 +20,9 @@ class loaitin extends Model
     public function add_Loaitin( $data){
         DB::insert('INSERT INTO loaitin (TenLoai) VALUES (?)', $data);
     }
+
+   public function getID_Loaitin($IDLoai)
+{
+    return DB::select("SELECT * FROM loaitin WHERE IDLoai = '$IDLoai'");
+}
 }

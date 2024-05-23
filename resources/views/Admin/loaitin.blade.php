@@ -17,6 +17,8 @@
              
                 <th>Mã loại</th>
                 <th>Tên loại</th>
+                <th width="5%">Sửa </th>
+                <th width="5%">Xoá </th>
             </tr>
         </thead>
         <tbody>
@@ -25,11 +27,19 @@
              <tr>
                 <td>{{$item->IDLoai}}</td>
                 <td>{{$item->TenLoai}}</td>
+                <td>
+                    <a href="{{route('loaitin.edit',[$item->IDLoai])}}" class="btn btn-warning btn-sm">Sửa</a>
+                </td>
 
-
+                 <td>
+                    <a href="#" class="btn btn-danger btn-sm">Xoá</a>
+                </td>
              </tr>
              @endforeach
-
+             @else
+             <tr>
+                <td coldspan="4">Không có người dùng</td>
+             </tr>
              @endif
         </tbody>
     </table>
