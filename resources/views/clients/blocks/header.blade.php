@@ -7,15 +7,15 @@
         <div class="col-8">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('home')}}">Trang chủ</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('home')}}">Trang ch?</a>
                 </li>
               
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('news')}}">Tin tức</a>
+                    <a class="nav-link" href="{{route('news')}}">Tin t?c</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('newdetails')}}">Chi tiết tin tức</a>
+                    <a class="nav-link" href="{{route('newdetails')}}">Chi ti?t tin t?c</a>
                 </li>
            
             </ul>
