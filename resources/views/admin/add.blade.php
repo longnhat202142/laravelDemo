@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Tin tức thông báo</title>
     <link href={{ asset('assets/clients/css/bootstrap.min.css') }} rel="stylesheet">
-    <link href={{ asset('assets/clients/css/admin/style.css') }} rel="stylesheet">
+    <link href={{ asset('assets/clients/css/admin/add.css') }} rel="stylesheet">
     {{-- eidtor --}}
     <script src="https://cdn.tiny.cloud/1/0nx2qsbkty80rb890oq7n80cd0rpljy6qcel4wgkkmaug073/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
@@ -171,10 +171,11 @@
                   
                   
                 {{-- editor --}}
-                <textarea name="editor" id="file-picker"></textarea>
+                <textarea name="noidung" id="file-picker"></textarea>
                 {{-- end editor --}}
                 <div style="margin-top: 5px">
-                    <input type="submit" value="Lưu Bài viết" class="btn btn-outline-success">
+                    {{-- <input type="submit" value="Lưu Bài viết" class="btn btn-outline-success"> --}}
+                    <a href="{{route('test')}}" class="btn btn-outline-success text-decoration-none">Lưu bài viết</a>
                     {{-- xem trước --}}
                     <!-- Button trigger modal -->
                       <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">

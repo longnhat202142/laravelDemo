@@ -20,8 +20,20 @@ Route::prefix('admin')->group(function () {
     return view('admin.add');
   })->name('admin.add');
 });
-Route::get('/', function(){
+Route::get('/footer', function(){
   return view('components.component.footer');
 });
-Route::get('/test',[TestController::class, 'test'])->name('test');
+Route::get('/thongbao', function(){
+  return view('components.component.ThongBao');
+});
+Route::get('/tuyendung', function(){
+  return view('components.component.TuyenDung');
+});
+Route::get('/video', function(){
+  return view('components.component.Video');
+});
+Route::get('/mota', function(){
+  return view('components.component.MoTa');
+});
+Route::get('/test',[TestController::class, 'test2'])->name('test');
 

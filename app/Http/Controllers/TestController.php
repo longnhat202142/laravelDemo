@@ -7,13 +7,13 @@ use DB;
 
 class TestController extends Controller
 {
-    public function test(){
+    public function test(Request $request){
         $query = DB::table('danhmuc')->get();
         return view('test', compact('query'));
+        
     }
     public function test2(Request $request){
-       if($request->has($request->input('noidung'))){
-        print_r($request->input('noidung'));
-       }
+       $title = $request->input('tieude');
+       return view('admin.add', compact('title'));
     }
 }
