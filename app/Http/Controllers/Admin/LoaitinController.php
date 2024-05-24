@@ -31,9 +31,9 @@ class LoaitinController extends Controller
             // 'IDLoai' => 'required|integer|max:9',
             'TenLoai' => 'required'
         ], [
-            // 'IDLoai.required' => 'ID loại bắt buộc phải nhập',
-            // 'IDLoai.integer' => 'ID loại phải là số nguyên',
-            // 'IDLoai.max' => 'ID loại không được lớn hơn :max',
+            'IDLoai.required' => 'ID loại bắt buộc phải nhập',
+            'IDLoai.integer' => 'ID loại phải là số nguyên',
+            'IDLoai.max' => 'ID loại không được lớn hơn :max',
             'TenLoai.required' => 'Tên loại bắt buộc phải nhập'
         ]);
      $dataInsert = [
@@ -48,16 +48,69 @@ class LoaitinController extends Controller
     }
 
 
-    public function getEdit($id){
+    public function getEdit( Request $request,int $id){
          $title ='Cập nhật người dùng';
          $this->loaitin = new loaitin();
         if (!empty($id)) {
+            $request->session()->put('id',$id);
             $getLoaitin = $this->loaitin->getID_Loaitin($id);
-            dd($getLoaitin);
+            if (!empty($getLoaitin[0]))
+            {
+                $getLoaitin = $getLoaitin[0];
+            }
+            else{
+                return redirect()->route('loaitin.index');
+            }
         } 
         else {
             return redirect()->route('loaitin.index');
         }
-        return view('Admin.loaitin.edit',compact('title'));
+        return view('Admin.loaitin.edit',compact('title','getLoaitin'));
     }
+
+
+     public function postEdit(Request $request){
+
+        $id =session('id');
+       
+            $request->validate([
+            // 'IDLoai' => 'required|integer|max:9',
+            'TenLoai' => 'required'
+        ], [
+            'IDLoai.required' => 'ID loại bắt buộc phải nhập',
+            'IDLoai.integer' => 'ID loại phải là số nguyên',
+            'IDLoai.max' => 'ID loại không được lớn hơn :max',
+            'TenLoai.required' => 'Tên loại bắt buộc phải nhập'
+        ]);
+
+         $this->loaitin = new loaitin();
+            // $dataUpdate = [
+            //     $request->TenLoai
+            // ];
+          $getLoaitin = $this->loaitin->updateLoaitin( $request->TenLoai,$id);
+
+          return redirect()->route('loaitin.index');
+     }
+
+     public function delete($id =0){
+
+        
+         $this->loaitin = new loaitin();
+        if (!empty($id)) {
+           
+            $deleteLoai = $this->loaitin->deleteLoaitin($id);
+            if (!empty($deleteLoai[0]))
+            {
+                $deleteLoai = $deleteLoai[0];
+            }
+            else{
+                return redirect()->route('loaitin.index');
+            }
+        } 
+        else {
+            return redirect()->route('loaitin.index');
+        }
+        return redirect()->route('loaitin.index');
+     }
 }
+

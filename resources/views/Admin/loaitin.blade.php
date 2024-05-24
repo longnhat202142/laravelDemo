@@ -32,7 +32,7 @@
                 </td>
 
                  <td>
-                    <a href="#" class="btn btn-danger btn-sm">Xoá</a>
+                    <a href="{{route('loaitin.delete',[$item->IDLoai])}}" class="btn btn-danger btn-sm">Xoá</a>
                 </td>
              </tr>
              @endforeach

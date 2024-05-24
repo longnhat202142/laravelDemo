@@ -21,8 +21,18 @@ class loaitin extends Model
         DB::insert('INSERT INTO loaitin (TenLoai) VALUES (?)', $data);
     }
 
-   public function getID_Loaitin($IDLoai)
-{
-    return DB::select("SELECT * FROM loaitin WHERE IDLoai = '$IDLoai'");
-}
+    public function getID_Loaitin(int $IDLoai)
+    {
+        return DB::select("SELECT * FROM loaitin WHERE IDLoai = '$IDLoai'");
+    }
+
+    public function updateLoaitin($data, $id)
+    {
+        return DB::update("UPDATE loaitin SET TenLoai = ? WHERE IDLoai = ?", [$data, $id]);
+    }
+
+    public function deleteLoaitin($id)
+    {
+        return DB::delete("DELETE FROM LOAITIN where IDLoai =?",[$id]);
+    }
 }

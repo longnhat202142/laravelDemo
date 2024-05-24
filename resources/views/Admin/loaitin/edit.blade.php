@@ -10,11 +10,9 @@
 <body>
    <div class="container">
 
-   @if ($errors->any())
-   <div class="alert alert-danger">Dữ liệu nhập vào không hợp lệ. Vui lòng kiểm tra lại</div>
-   @endif
+  
      <h1>{{$title}}</h1>
-    <form action="" method="POST">
+    <form action="{{route('loaitin.post-edit')}}" method="POST">
     <!-- <div class="mb-3">
         <label for="">Mã loại</label>
         <input type="text" class="form-control" name="IDLoai" 
@@ -28,7 +26,8 @@
      <div class="mb-3">
         <label for="">Tên loại</label>
         <input type="text" class="form-control" name="TenLoai" 
-        placeholder="Tên loại" value="{{old('TenLoai')}}">
+        placeholder="Tên loại" 
+        value="{{old('TenLoai') ?? $getLoaitin->TenLoai}}">
          @error('TenLoai')
            <span style="color:red">{{$message}}</span>
         @enderror
