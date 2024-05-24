@@ -17,29 +17,51 @@ use App\Http\Controllers\Admin\LoaitinController;
 use Illuminate\Support\Facades\DB;
 
 
-Route::get('/', function(){
+Route::prefix('admin')->group(function () {
+  Route::get('/thongbao', function(){
+    return view('admin.content.thongbao');
+  })->name('admin');
+  Route::get('/add', function(){
+    return view('admin.add');
+  })->name('admin.add');
+});
+Route::get('/footer', function(){
   return view('components.component.footer');
 });
 
-// Bài 2: Client Routes
+Route::get('/thongbao', function(){
+  return view('components.component.ThongBao');
+});
+Route::get('/tuyendung', function(){
+  return view('components.component.TuyenDung');
+});
+Route::get('/video', function(){
+  return view('components.component.Video');
+});
+Route::get('/mota', function(){
+  return view('components.component.MoTa');
+});
+Route::get('/test',[TestController::class, 'test2'])->name('test');
+
+// B�i 2: Client Routes
 Route::prefix('category')->group(function(){
 
-    // Danh sách chuyên mục
+    // Danh s�ch chuy�n m?c
     Route::get('/',[CategoryController::class,'index'])->name('category.list');
 
-    // Lấy chi tiết 1 chuyên mục (áp dụng show form sửa chuyên mục)
+    // L?y chi ti?t 1 chuy�n m?c (�p d?ng show form s?a chuy�n m?c)
     Route::get('/edit/{id}',[CategoryController::class,'getCategory'])->name('category.edit');
 
-    // Xử lí update
+    // X? l� update
     Route::post('/edit/{id}',[CategoryController::class,'updateCategory']);
 
-    // Hiển thị form add dữ liệu
+    // Hi?n th? form add d? li?u
     Route::get('/add',[CategoryController::class,'addCategory'])->name('category.add');
 
-    // Xử lí thêm chuyên mục
+    // X? l� th�m chuy�n m?c
     Route::post('/add',[CategoryController::class,'handleAddCategory']);
 
-    // Xoá chuyên mục
+    // Xo� chuy�n m?c
     Route::delete('/delete/{id}',[CategoryController::class,'deleteCategory'])->name('category.delete');
 });
 
@@ -71,7 +93,7 @@ Route::put('/them-san-pham',[HomeController::class,'putAdd']);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-// Route người dùng
+// Route ngu?i d�ng
 Route::prefix('users')->group(function(){
   Route::get('/',[UserController::class,'index']);
   
@@ -84,7 +106,7 @@ Route::get('/news',[NewController::class,'index'])->name('news');
 Route::get('/new-details',[NewDetailsController::class,'index'])->name('newdetails');
 
 
-// Đăng nhập với tài khoản CSDL 
+// �ang nh?p v?i t�i kho?n CSDL 
 
 Route::get('/login',[UserController::class,'showlogin'])->name('login');
 Route::post('/login',[UserController::class,'login']);
