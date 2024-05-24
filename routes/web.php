@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TuyenDungController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\DB;
 
 
@@ -85,7 +86,7 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
 // Blade Template - phan 1
 Route::get('/',[HomeController::class,'index'])->name('home');
 
-Route::get('tuyendung',[TuyenDungController::class,'index'])->name('tuyendung');
+
 
 
 Route::get('/san-pham',[HomeController::class,'products'])->name('sp');
@@ -110,3 +111,6 @@ Route::prefix('users')->group(function(){
 
 Route::get('/login',[UserController::class,'showlogin'])->name('login');
 Route::post('/login',[UserController::class,'login']);
+
+
+Route::resource('/menu',MenuController::class);
