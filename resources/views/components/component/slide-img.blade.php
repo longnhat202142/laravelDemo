@@ -22,7 +22,8 @@
             </div>
         </div>
     </div>
-  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height:80%">
+   
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height:80%">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -31,7 +32,8 @@
     </ol>
 
     <!-- Wrapper for slides -->
-    <div class="carousel-inner" >
+      <div class="box">
+      <div class="carousel-inner" >
       <div class="item active">
         <img  src="{{asset('assets/clients/img/cover0.jpg')}}" alt="" style="width:100%">
       </div>
@@ -44,6 +46,8 @@
         <img  src="{{asset('assets/clients/img/cover7.jpg')}}" alt="" style="width:100%;">
       </div>
     </div>
+      </div>
+    
 
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev" style="width: 5%;">
@@ -55,6 +59,8 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+
+  
 </div>
 
 
