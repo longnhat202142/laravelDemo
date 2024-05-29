@@ -9,7 +9,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\TuyenDungController;
+
 use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\DB;
 
