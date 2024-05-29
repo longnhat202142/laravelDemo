@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TuyenDungController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewController;
+
 use App\Http\Controllers\NewDetailsController;
 use App\Http\Controllers\Admin\LoaitinController;
 use Illuminate\Support\Facades\DB;
@@ -46,19 +47,15 @@ Route::prefix('users')->group(function(){
   
 });
 
-Route::get('/login',[UserController::class,'showlogin'])->name('login');
-Route::post('/login',[UserController::class,'login']);
 
 Route::get('/news',[NewController::class,'index'])->name('news');
 Route::get('/new-details',[NewDetailsController::class,'index'])->name('newdetails');
 
 
 // Ðang nh?p v?i tài kho?n CSDL 
+Auth::routes();
 
-Route::get('/login',[UserController::class,'showlogin'])->name('login');
-Route::post('/login',[UserController::class,'login']);
-
-
+Route::get('/home',[UserController::class,'showUser'])->name('home');
 
 Route::prefix('/loaitin')->name('loaitin.')->group(function(){
 
@@ -73,3 +70,4 @@ Route::prefix('/loaitin')->name('loaitin.')->group(function(){
   Route::post('/update',[LoaitinController::class,'postEdit'])->name('post-edit');
 
    Route::get('/delete/{id}',[LoaitinController::class,'delete'])->name('delete');
+});

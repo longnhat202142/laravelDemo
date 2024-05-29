@@ -9,25 +9,17 @@
 </head>
 <body>
     @include('clients.blocks.header')
-    <main class="py-5">
-       <div class="container">
-         <div class="row">
-        <div class="col-4">
-        <aside>
-                @section('sidebar')
-             
-                @show
-            </aside>
-        </div>
-          <div class="col-8">
-          <div class="content">
+         <div class="content">
             @yield('content')
         </div>
-          </div>
-        </div>
-       </div>
+        
+      
+        
        <x-component.news/>
-    </main>
+       <x-component.Video/>
+       <x-component.MoTa/>
+
+    
     @include('clients.blocks.footer')
     <script src="{{asset('assets/clients/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/clients/js/custom.js')}}"></script>

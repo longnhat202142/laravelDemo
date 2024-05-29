@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class UserController extends Controller
 {
@@ -15,32 +17,25 @@ class UserController extends Controller
         return view('clients.user.login');
     }
     public function login(Request $request){
-        $username = $request->input('email');
-        $password = $request->input('password');
+         $TenDangNhap = $request->TenDangNhap; 
+         $MatKhau = $request->input('MatKhau');
 
-        $user = DB::table('nguoidung')
-            ->where('tendangnhap', $username)
-            ->where('matkhau', $password)
-            ->first();
-
-        if ($user) {
-            // Authentication passed
-           $request->session()->put('user', $user);
-             //$request->session()->put('user', $user);
-             if ($request->session()->has('user'))
-             {
-                dd($request->session()->get('user'));
-             }
-             else 
-            return 'Không có USER';
-            // return view('clients.home'); // Redirect authenticated user to homepage
-
-            
-        } else {
-            // Authentication failed
-          
-
-            return redirect()->back()->withInput()->withErrors(['username' => 'Username or password is incorrect']);
+         $password = Hash::make('MatKhau');
+      
+        
+        
+         if(Auth::attempt(['TenDangNhap'=>$TenDangNhap ,'MatKhau'=>$MatKhau, 'password'=>$password])){
+            echo 'Đăng nhập thành công';
         }
+        else
+            echo 'Đăng nhập thất bại';
+    
+        
     }
+
+
+    public function showUser(){
+        return view('clients.news');
+    }
+
 }
