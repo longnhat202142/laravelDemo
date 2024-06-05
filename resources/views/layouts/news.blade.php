@@ -8,19 +8,13 @@
     <link rel="stylesheet" href="{{asset('assets/clients/css/style.css')}}">
 </head>
 <body>
-    @include('clients.blocks.header')
-         <div class="content">
-            @yield('content')
-        </div>
-        
-      
-        
-       <x-component.news/>
-       <x-component.Video/>
-       <x-component.MoTa/>
-
-    
-    @include('clients.blocks.footer')
+    {{-- @include('clients.blocks.header') --}}
+    <x-component.header/>
+    @yield('content')
+    <x-component.news/>
+    <x-component.Video/>
+    <x-component.MoTa/>
+    <x-component.footer/>
     <script src="{{asset('assets/clients/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/clients/js/custom.js')}}"></script>
 

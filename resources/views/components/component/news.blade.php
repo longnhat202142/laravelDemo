@@ -108,7 +108,7 @@
    </div>
 <div id="demo" class="carousel slide carousel-css" data-bs-ride="carousel">
 
-  <div class="carousel-inner">
+  <div class="carousel-inner" style="max-height: 500px">
     <div class="carousel-item active">
       <img src="https://www.ftu.edu.vn/images/Tuyensinh/tuyensinh.png" alt="Los Angeles" class="d-block" style="width:100%">
     </div>

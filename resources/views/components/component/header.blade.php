@@ -116,7 +116,7 @@
                 <li class="nav_item" style=" position: static;" id="container3">
                   <div>
                   <h4 style=" letter-spacing: 1px;"> 
-                    <a class="nav-link item_link" style="color:white;text-decoration: none;" href="{{route('sp')}}">TUYỂN SINH </a>
+                    <a class="nav-link item_link" style="color:white;text-decoration: none;" href="#">TUYỂN SINH </a>
                     </h4>
                   </div>
 

@@ -8,8 +8,6 @@
     <link href={{ asset('assets/clients/css/admin/layout_admin.css') }} rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-   
 </head>
 <body>
 
@@ -28,14 +26,21 @@
                         <div class="dropdown ">
                           <button class=" rounded-pill btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/800px-User_icon_2.svg.png" alt="" style="height: 30px; width: 30px">
-                            Nhật Minh
+                            {{Auth::user()->name}}
                           </button>
                           <ul class="dropdown-menu">
                             <div class="us">
                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/800px-User_icon_2.svg.png" alt="" style="height: 30px; width: 30px; margin-left: 5px">
                             Trần Hữu Nhật Minh
                             <hr>
-                            <a href="" class="text-decoration-none" style="color: #333333; margin-left: 5px"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
+                            <span>{{Auth::user()->email}}</span>
+                            <hr>
+                            <a href="{{ route('logout') }}" class="text-decoration-none" style="color: #333333; margin-left: 5px"
+                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                              @csrf
+                          </form>
                             </div>
                           </ul>
                         </div>
@@ -49,31 +54,21 @@
         <div class="sidebar">
             <h3>Quản lý</h3>
             <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Quản lý giới thiệu</a>
-                    <ul class="nav flex-column ml-3">
-                        <li class="nav-item"><a class="nav-link" href="#">Tổng quan</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Cơ cấu tổ chức</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#">Quản lý tuyển sinh</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Quản lý đào tạo</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Quản lý khoa học</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Quản lý tin tức</a></li>
-                <ul class="nav flex-column ml-3">
-                    <li class="nav-item"><a class="nav-link" href="#">Tin tức</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Thông báo</a></li>
-                </ul>
-                <li class="nav-item"><a class="nav-link" href="#">Quản lý tài nguyên</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Trang chủ</a></li>
+                {{-- <li class="nav-item"><a class="nav-link" href="{{ route('danhmuc') }}">Quản lý danh mục</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('quangcao') }}">Quản lý quảng cáo</a></li> --}}
+                <li class="nav-item"><a class="nav-link" href="{{ route('danhmuc') }}">Quản lý danh mục</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('thongbao') }}">Quản lý tin tức thông báo</a></li>
+                {{-- <li class="nav-item"><a class="nav-link" href="{{ route('tintuc') }}">Quản lý tin tức</a></li> --}}
+                <li class="nav-item"><a class="nav-link" href="{{ route('menu') }}">Quản lý menu</a></li>
             </ul>
         </div>
     {{-- endsidebar --}}
     <div class="content">
-          
-         {{-- content  --}}
-         @yield('content')
-         {{-- end content  --}}
+          @yield('menu')
+          @yield('thongbao')
+          @yield('danhmuc')
     </div>
 </body>
-<script href={{asset('assets/clients/js/bootstrap.min.css')}}></script>
+<script href={{asset('assets/clients/js/bootstrap.min.js')}}></script>
 </html>

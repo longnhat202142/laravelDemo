@@ -21,7 +21,7 @@
         transition: font-size 0.7s;
     }
     .nav-item a:hover{
-        font-size: 20px ;
+        font-size: 17px ;
         color: rgb(175, 234, 234);
     }
     .content {
