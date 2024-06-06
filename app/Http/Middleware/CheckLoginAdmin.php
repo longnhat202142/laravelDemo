@@ -16,7 +16,7 @@ class CheckLoginAdmin
     public function handle(Request $request, Closure $next): Response
     {
 
-       // echo 'Middleware request';
-        return $next($request);
+     
+       return $next($request);
     }
 }
