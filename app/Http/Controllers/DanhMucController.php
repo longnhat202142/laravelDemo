@@ -10,6 +10,7 @@ use DB;
 class DanhMucController extends Controller
 {
     public function __construct() {
+        $this->middleware('auth');
         $this->danhmuc = new DanhMuc();
     }
     /**

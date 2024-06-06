@@ -11,6 +11,7 @@ use DB;
 class ThongBaoController extends Controller
 {
     public function __construct() {
+        $this->middleware('auth');
         $this->thongbao = new ThongBao();
     }
     /**

@@ -44,7 +44,7 @@
                             <td>{{$item->ThuTuHienThi}}</td>
                             <td>{{$item->TieuDe}}</td>
                             <td>{{$item->MaDanhMuc}}</td>
-                            <td>{{$item->IDNguoiTao}}</td>
+                            <td>{{$item->IdNguoiTao}}</td>
                             <td>{{$item->NgayTao}}</td>
                             <td>{{$item->IdNguoiCapNhat}}</td>
                             <td>{{$item->NgayCapNhat}}</td>
