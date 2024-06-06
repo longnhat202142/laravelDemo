@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Route;
 use  App\Models\User;
 
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TuyenDungController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewDetailsController;
 use App\Http\Controllers\Admin\LoaitinController;
-use App\Http\Controllers\ThongBaoController;
-use App\Http\Controllers\DanhMucController;
+use App\Http\Controllers\Admin\ThongBaoController;
+use App\Http\Controllers\Admin\DanhMucController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\DB;
 
@@ -53,9 +53,7 @@ Route::get('/header', function(){
   return view('clients.blocks.header');
 });
 
-Route::get('/thongbao', function(){
-  return view('components.component.ThongBao');
-});
+
 Route::get('/tuyendung', function(){
   return view('components.component.TuyenDung');
 });
@@ -81,7 +79,19 @@ Route::get('/new-details',[NewDetailsController::class,'index'])->name('newdetai
 
 // Ðang nh?p v?i tài kho?n CSDL 
 // Auth::routes();
-Route::get('/',[UserController::class,'showUser'])->name('home');
+Route::get('/',[HomeController::class,'index'])->name('home');
+// thông báo
+    Route::get('/thongbao', [HomeController::class,'ThongBao'])->name('ThongBao');
+    Route::get('/thongbao/{id?}/{cm?}', [HomeController::class,'SearchDetail_Tb'])->name('search_detail_tb');
+// end thông báo
+//tin tức 
+    Route::get('/tintuc', [HomeController::class,'TinTuc'])->name('tintuc');
+    Route::get('/tintuc/{id}/{cm?}', [HomeController::class,'SearchDetail_Tt'])->name('search_detail_tt');
+//end tin tức 
+// danh mục
+//     Route::get('/thongbao/{id}', [HomeController::class,'ChuyenMuc'])->name('chuyenmuc');
+//     Route::get('/tintuc/{id}', [HomeController::class,'SearchDetail_Cm'])->name('search_detail_Cm');
+// enđdanh mục
 
 // Route::prefix('/loaitin')->name('loaitin.')->group(function(){
 

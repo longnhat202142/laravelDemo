@@ -48,7 +48,7 @@
                             <td>{{$item->NgayTao}}</td>
                             <td>{{$item->IdNguoiCapNhat}}</td>
                             <td>{{$item->NgayCapNhat}}</td>
-                            <td>{{($item->IDCha > 0) ? $item->TieuDe: "" }}</td>
+                            <td>{{DB::table('danhmuc')->where('IDCha',$item->IDCha)->value('TieuDe') }}</td>
                             <td>{{$item->TrangThai}}</td>
                             <td class="actions" style="display: flex">
                                 <a href="{{ route('DanhMuc.Edit', [$item->IDDanhMuc]) }}" class="btn btn-outline-info text-decoration-none"><i class="fa-regular fa-pen-to-square"></i></a>

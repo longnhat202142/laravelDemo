@@ -42,11 +42,11 @@
                             <td>{{$stt++}}</td>
                             <td>{{$item->TieuDe}}</td>
                             <td>{{$item->MaTinTuc}}</td>
-                            <td>{{$item->IDNguoiTao}}</td>
+                            <td>{{DB::table('users')->where('id',$item->IDNguoiTao)->value('name')}}</td>
                             <td>{{$item->NgayTao}}</td>
-                            <td>{{$item->IDNguoiCapNhat}}</td>
+                            <td>{{DB::table('users')->where('id',$item->IDNguoiCapNhat)->value('name')}}</td>
                             <td>{{$item->NgayCapNhat}}</td>
-                            <td>{{$item->IDDanhMuc}}</td>
+                            <td>{{DB::table('danhmuc')->where('IDDanhMuc',$item->IDDanhMuc)->value('TieuDe')}}</td>
                             <td>{{($item->IDLoai == 1)?"Thông báo":"Tin tức"}}</td>
                             <td class="actions" style="display: flex">
                                 <a href="{{ route('ThongBao.Edit', [$item->IDTinTuc]) }}" class="btn btn-outline-info text-decoration-none"><i class="fa-regular fa-pen-to-square"></i></a>

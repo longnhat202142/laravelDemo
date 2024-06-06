@@ -6,32 +6,26 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    //Action index()
-    public $data =[];
     public function index(Request $request){
-        $this->data['title'] = 'Phần nội dung';
-         
-        
-         //$user = $request->session()->get('user');
-         if ($request->session()->has('user')){
-             echo 'Biến ss'+ $request->session()->get('user');
-         }
-
-        
-        else
-        {
-            return 'Không có USER';
+        return view('layouts.news');         
+    }
+    public function ThongBao(){
+        return view('components.component.ThongBao');
+    }
+    public function SearchDetail_Tb(Request $request, $id){
+        if(!empty($request->id)){
+           $baiviet = DB::table('tintuc')->where('IdTinTuc', $request->id)->first();
+           return view('components.component.ThongBao', compact('baiviet'));
         }
-       // return view('clients.home',$this->data);
     }
-
- 
-    public function postAdd (Request $request){
-        dd($request);
+    public function TinTuc(){
+        return view('components.component.TinTuc');
     }
-
-    public function putAdd (Request $request){
-        return 'Phương thức put';
-        dd($request);
+    public function SearchDetail_Tt(Request $request, $id){
+        if(!empty($request->id)){
+           $baiviet = DB::table('tintuc')->where('IdTinTuc', $request->id)->first();
+           return view('components.component.TinTuc', compact('baiviet'));
+        }
     }
+    
 }

@@ -31,11 +31,11 @@
                           <ul class="dropdown-menu">
                             <div class="us">
                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/800px-User_icon_2.svg.png" alt="" style="height: 30px; width: 30px; margin-left: 5px">
-                            Trần Hữu Nhật Minh
+                             {{Auth::user()->name}}
                             <hr>
                             <span>{{Auth::user()->email}}</span>
                             <hr>
-                            <a href="{{ route('logout') }}" class="text-decoration-none" style="color: #333333; margin-left: 5px"
+                            <a href="{{ route('logout') }}" class="nav-link text-decoration-none" style="color: #333333; margin-left: 5px"
                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

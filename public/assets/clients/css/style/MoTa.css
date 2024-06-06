@@ -22,9 +22,10 @@
     display: flex;
     margin: 0 -34px 0 13px;
 }
-.img{
+.img-mota{
     height: 500px;width: 530px;
     margin: 0 0;
+    margin-right: -51.5px;
     padding: 0 0 0 40%;
     background-size: cover;
 }
@@ -43,8 +44,10 @@
     color: aliceblue; 
     transition: all 0.5s;
 }
-.decription{
+.decription-td{
     text-align: center;
+    font-size: 20px;
+    font-weight: 400;
 }
 .content{
     margin: 0 10%;

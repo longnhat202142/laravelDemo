@@ -76,11 +76,12 @@
     text-align: center;
 }
 
-h4 {
-    width: 350px; /* Điều chỉnh kích thước theo ý muốn */
+.content-list h4 {
+    padding-top: 10px;
+    width: 100%; /* Điều chỉnh kích thước theo ý muốn */
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -97,4 +98,35 @@ h4 {
     font-weight: 600;
     font-size: 16px;
     padding-bottom: 5px;
+}
+.news-list{
+    margin: 40px 0;
+}
+.content-list{
+    width: 321px;
+}
+.content-list h4 a{
+    font-size: 17px;
+    font-weight: 700;
+    color: #333333;
+    font-family: monospace;
+    text-align: justify;
+}
+.time{
+    color: #929292;
+    font-size: 15px;
+}
+.decription p{
+    text-align: justify
+}
+.decription{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 1.4;
+    color: #333333;
+    font-size: 15px;
+    font-family: monospace;
 }

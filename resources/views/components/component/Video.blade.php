@@ -12,15 +12,15 @@
 </head>
 <body>
     {{-- Thông báo và video --}}
-      <div class="container border">
+      <div class="container border" style="margin-top: 50px">
         <div class="row">
           <div class="col-sm-6">
             @for ($i = 0; $i <3; $i++)
                 
-            <div class="card">
+            <div class="card" style="border: 0">
               <div class="card-body">
-                <h5 class="card-title">VTV3 - GIỚI THIỆU VỀ TRƯỜNG ĐẠI HỌC KHOA HỌC, ĐH HUẾ</h5>
-                <p class="hr"> </p>
+                <h5 class="card-title" style="color: #143980">VTV3 - GIỚI THIỆU VỀ TRƯỜNG ĐẠI HỌC KHOA HỌC, ĐH HUẾ</h5>
+                <p class="hr" style="height: 2px; width: 300px; margin: 10px auto; background-color: #143980;"> </p>
                 <video width="560" height="315" class="border" controls 
                 poster="https://student.husc.edu.vn/Themes/Login/images/Logo-ko-nen.png">
                   <source src="mov_bbb.mp4" type="video/mp4">
@@ -34,7 +34,7 @@
               </div>
             </div>
             @endfor
-            <div class="comic">
+            <div class="comic" style=" margin: auto; background-color: #143980; width: 521.81px; height: 115px;">
               <a href="" class="text-decoration-none" style="display: flex">
                 <div >
                   <img src="	https://husc.edu.vn/images/tapchi.png" alt="">
@@ -47,22 +47,25 @@
             </div>
           </div>
           <div class="col-sm-6">
-            <div class="card">
+            <div class="card" style="border: 0">
               <div class="card-body"style="padding: 53.5px 0 0 0">
-                <h5 class="card-title" style="margin: 0 0 40px">THÔNG BÁO MỚI
-                  <p class="hr" style="height: 1.5px; width: 15%"> </p>
+                <h5 class="card-title" style="margin: 0 0 40px; color: #143980">THÔNG BÁO MỚI
+                  <p class="hr" style="height: 1.5px; width: 15%; margin: 10px auto; background-color: #143980;"> </p>
                 </h5>
-                @for ($i = 0; $i < 6; $i++)
-                  <div class="news-a">
-                    <a class="text-decoration-none" href="https://husc.edu.vn/announcements.php?readmore=2598">Thông tin luận án tiến sĩ của NCS Bùi Lê Thanh Nhàn</a>
+                @foreach (DB::table('tintuc')->where('IDLoai','1')->orderBy('NgayTao','DESC')->get() as $item)
+                  <div class="news-a" style="margin-bottom: 20px;">
+                    <a class="text-decoration-none" href="{{ route('search_detail_tb', ['id'=>$item->IDTinTuc]) }}" 
+                        style=" color: #143980; font-weight: 600; font-size: medium">{{$item->TieuDe}}</a>
                     <hr style="margin: 10px 0; background-color: darkgrey">
-                    <div class="time"><img src="https://husc.edu.vn/images/icon-calendar.png" alt=""> 07-05-2024</div>
-                    <div class="post-place">
+                    <div class="time"><img src="https://husc.edu.vn/images/icon-calendar.png" alt=""> {{$item->NgayTao}}</div>
+                    <div class="post-place" style="font-size: 15px">
                       <small>Được đăng ở:&nbsp; <br>
-                        <a class="text-decoration-none" style="color: #333333; font-weight: 350" href="https://husc.edu.vn/saudaihoc/announcements.php?readmore=2598">Phòng đào tạo sau đại học</a>
+                        <a class="text-decoration-none" style="color: #333333;font-size: small ; font-weight: 350" href="https://husc.edu.vn/saudaihoc/announcements.php?readmore=2598">
+                          {{DB::table('danhmuc')->where('IDDanhMuc',$item->IDDanhMuc)->value('TieuDe')}}
+                        </a>
                       </small></div>
                   </div>
-                @endfor
+                @endforeach
                 <div style="margin:auto; text-align: center">
                   <a href="#" class="btn" style="color: aliceblue; background-color: #143980">Xem Thêm</a>
                 </div>

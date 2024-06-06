@@ -1,7 +1,7 @@
 
 
 <div class="position-relative" >
-    <div class="position-absolute" style="z-index: 1;display:flex;align-items: flex-end;width:50%;margin-left: 4%;height:85%">
+    <div class="position-absolute" style="z-index: 1;display:flex;align-items: flex-end;margin-left: 4%;height:94px; bottom: 80px">
         <div class="container d-flex">
             <img src="http://husc.hueuni.edu.vn/images/logo.png" alt="" style="width:11%">
             <div class="px-4">
@@ -12,7 +12,7 @@
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     -webkit-user-select: none; ">ĐẠI HỌC HUẾ</h1></p>
-                <p class="title" style="font-size:48px;font-weight:700;color:white;text-shadow: -1px -1px 0 #000,  
+                <p class="title" style="font-size:35px;font-weight:700;color:white;text-shadow: -1px -1px 0 #000,  
                   1px -1px 0 #000,
                  -1px  1px 0 #000,
                   1px  1px 0 #000;pointer-events: none;user-select: none; /* Ngăn chặn việc chọn văn bản */
@@ -33,7 +33,7 @@
 
     <!-- Wrapper for slides -->
       <div class="box">
-      <div class="carousel-inner" >
+      <div class="carousel-inner" style="max-height: 350px" >
       <div class="item active">
         <img  src="{{asset('assets/clients/img/cover0.jpg')}}" alt="" style="width:100%">
       </div>
