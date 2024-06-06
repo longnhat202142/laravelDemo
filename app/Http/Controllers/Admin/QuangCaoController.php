@@ -19,7 +19,7 @@ class QuangCaoController extends Controller
             $query->where('NoiDung','like','%' .$key. '%');
         }
         $quangcao = $query->paginate(4);
-        return view('Admin.quangcao',compact('quangcao','title'));git pull --rebase
+        return view('Admin.quangcao',compact('quangcao','title'));
     }
 
     /**
@@ -79,6 +79,6 @@ class QuangCaoController extends Controller
     {
         $quangcao=quangcao::where('IDQuangCao', $id)->first();
         $quangcao->delete();
-        return redirect()->route('quangcao.index')->with('thongbao','Xóa thành công!');
+       // return redirect()->route('quangcao.index')->with('thongbao','Xóa thành công!');
     }
 }
