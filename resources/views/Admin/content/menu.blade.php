@@ -43,8 +43,8 @@
                     <td>{{$item->TrangThai}}</td>
                     <td>{{$item->LienKet}}</td>
                     <td>
-                        <form action="{{route('menu.destroy',$item->IDMenu)}}" method="POST">
-                            <a href="{{route('menu.edit',$item->IDMenu)}}" class="btn btn-info">Sửa</a>
+                        <form action="{{route('admin.menu.destroy',$item->IDMenu)}}" method="POST">
+                            <a href="{{route('admin.menu.edit',$item->IDMenu)}}" class="btn btn-info">Sửa</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Xóa</button>

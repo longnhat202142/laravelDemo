@@ -12,9 +12,19 @@ class ThongBao extends Model
     use HasFactory;
     protected $table = 'tintuc';
     protected $tableDM = 'danhmuc';
+    protected $tableLT = 'loaitin';
     
     public function getThongBao(){
         return DB::table('tintuc')->orderBy('NgayTao','desc')->get();
+    }
+    public function Pag($i){
+        return DB::table('tintuc')->paginate($i);
+    }
+    public function getLoai(){
+        return DB::table('loaitin')->get();
+    }
+    public function getLoaiTin($id){
+        return DB::table('tintuc')->where('IDLoai', $id)->get();
     }
     public function AddThongBao($data){
         return DB::table('tintuc')->insert($data);
@@ -22,7 +32,6 @@ class ThongBao extends Model
     public function getDetail($id){
         return DB::table('tintuc')->where('IDTinTuc',$id)->first();
     }
-    
     public function UpdateThongBao($id, $data){
         return DB::table('tintuc')->where('IDTinTuc', $id)->update($data);
     }

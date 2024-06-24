@@ -3,7 +3,7 @@
      {{-- content --}}
      <div class="content">
       <div class="row border border-3 rounded-3">
-        <form action="{{$list ? route('ThongBao.Edit', [$list->IDTinTuc]) : route('ThongBao.Add') }}" class="col-12" style="padding: 15px 15px 7px 15px" enctype="multipart/form-data" method="POST">
+        <form action="{{$list ? route('admin.ThongBao.Edit', [$list->IDTinTuc]) : route('admin.ThongBao.Add') }}" class="col-12" style="padding: 15px 15px 7px 15px" enctype="multipart/form-data" method="POST">
           @csrf
           @if ($list)
               @method('PUT')
@@ -20,9 +20,9 @@
               <div class="form-group row">
                   <div class="col">
                       <select name="IDDanhMuc" id="IDDanhMuc" class="form-control">
-                          <option value="0" selected>--- Chọn chuyên mục ---</option>
+                          <option value="0">--- Chọn chuyên mục ---</option>
                           @foreach (DB::table('DanhMuc')->get() as $item)
-                            <option value="{{$item->IDDanhMuc}}">{{$item->TieuDe}}</option>
+                            <option value="{{$item->IDDanhMuc}}" {{(isset($list) && $list->IDDanhMuc == $item->IDDanhMuc )? 'selected' : ''}}>{{$item->TieuDe}}</option>
                           @endforeach
                       </select>
                   </div>
@@ -41,12 +41,29 @@
                       </label>
                     </div>
                   </div>
+                  <div class="col">
+                    <div class="form-check ">
+                      <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" {{(isset($list) && $list->TrangThai == 1)? 'checked' : ''}} name="TrangThai">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Hoạt động
+                      </label>
+                    </div>
+                  </div>
               </div>
-              
-                
-                
-              {{-- editor --}}
-              <textarea name="NoiDung" class="form-control my-editor" rows="18">{{ $list ? htmlspecialchars_decode($list->NoiDung) : '' }}</textarea>
+
+                <div class="form-group">
+                  <label for="formFile" class="form-label">File đính kèm</label>
+                  <input class="form-control" type="file" id="formFile" name="File" multiple >
+                </div>
+                  <div class="form-group">
+                    <label for="formFile" class="form-label">Ảnh đại diện</label>
+                    <input type="hidden" name="img" value="{{isset($list) ? $list->Anh: ""}}">
+                    <input class="form-control" type="file"  id="currentImage" name="Anh" accept="image/*" onchange="chooseFile(this)">
+                    <img src="{{ isset($list) ? asset('public/storage/AnhDaiDien/' . $list->Anh) : 'https://duonganh.com.vn/en/admin/assets/images/404.png' }}" id="img" alt="" style="margin-top:5px; max-width: 100px; max-height: 100px; ">
+                  </div>
+                  {{-- editor --}}
+                  <textarea name="TomTat" class="form-control my-editor" rows="10" placeholder="soạn tóm tắt...">{{ $list ? htmlspecialchars_decode($list->TomTat) : '' }}</textarea>
+                  <textarea name="NoiDung" class="form-control my-editor" rows="25" placeholder="soạn nội dung...">{{ $list ? htmlspecialchars_decode($list->NoiDung) : '' }}</textarea>
               {{-- end editor --}}
               <div style="margin-top: 5px">
                   {{-- <input type="submit" value="Lưu Bài viết" class="btn btn-outline-success"> --}}
@@ -82,4 +99,55 @@
       
   </div>
   {{-- end content --}}
+  <script>
+    function ChangeToSlug() {
+        var title, slug;
+  
+        // Lấy text từ thẻ input title 
+        title = document.getElementById("TieuDe").value;
+  
+        // Đổi chữ hoa thành chữ thường
+        slug = title.toLowerCase();
+  
+        // Đổi ký tự có dấu thành không dấu
+        slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+        slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+        slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+        slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+        slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+        slug = slug.replace(/đ/gi, 'd');
+  
+        // Xóa các ký tự đặc biệt
+        slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+        // Đổi khoảng trắng thành ký tự gạch ngang
+        slug = slug.replace(/ /gi, "-");
+        // Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+        slug = slug.replace(/\-\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-/gi, '-');
+        // Xóa các ký tự gạch ngang ở đầu và cuối
+        slug = '@' + slug + '@';
+        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+  
+        // In slug ra textbox có id “MaTinTuc”
+        document.getElementById('MaTinTuc').value = slug;
+    }
+  
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('TieuDe').addEventListener('input', ChangeToSlug);
+    });
+  </script>
+  <script>
+    function chooseFile(fileInput) {
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('img').src = e.target.result;
+            }
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+  </script>
 @endsection

@@ -23,7 +23,7 @@
                 </H1>
                 <div class="hr"></div>
               </div>
-              <p class="decription">
+              <p class="decription-td">
                 Sinh viên lựa chọn Trường ĐHKH làm nơi học tập và rèn luyện có nhiều cơ hội tìm kiếm việc làm hơn, bởi chiến lược, chương trình đào tạo, kế hoạch quảng bá và chương trình tiếp thị việc làm được quan tâm, thực hiện thường xuyên và hiệu quả.
               </p>
               <div class="content">
@@ -47,7 +47,7 @@
                 </table>
               </div>
             </div>
-            <div class="img" style="background-image:url('https://husc.edu.vn/images/img_reason1.jpg')"> </div>
+            <div class="img-mota" style="background-image:url('https://husc.edu.vn/images/img_reason1.jpg')"> </div>
           </div>
         </div>
     </div>

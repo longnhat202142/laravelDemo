@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DanhMuc;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,7 @@ use DB;
 class DanhMucController extends Controller
 {
     public function __construct() {
+        $this->middleware('auth');
         $this->danhmuc = new DanhMuc();
     }
     /**
@@ -32,7 +34,7 @@ class DanhMucController extends Controller
      */
     public function create(Request $request)
     {
-        $request->session()->flash('back_url', route('danhmuc'));
+        $request->session()->flash('back_url', route('admin.danhmuc'));
         $list = $this->danhmuc->getDetail(0);
         $danhmucList = $this->danhmuc->getDanhMuc();
         return view('admin.Add.DanhMuc', compact('list','danhmucList'));
@@ -55,7 +57,7 @@ class DanhMucController extends Controller
              // 'NgayCapNhat' => now()->format('Y-m-d H:i:s'),
             ];
             $this->danhmuc->AddDanhMuc($data);
-            return redirect()->route('danhmuc');
+            return redirect()->route('admin.danhmuc');
          }
     }
 
@@ -72,7 +74,7 @@ class DanhMucController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $request->session()->flash('back_url', route('danhmuc'));
+        $request->session()->flash('back_url', route('admin.danhmuc'));
         $danhmucList = $this->danhmuc->getDanhMuc();
         if(!empty($id)){
             $list = $this->danhmuc->getDetail($id);
@@ -96,7 +98,7 @@ class DanhMucController extends Controller
                 'NgayCapNhat' => now()->format('Y-m-d H:i:s')
             ];
             $this->danhmuc->UpdateDanhMuc($id,$data);
-            return redirect()->route('danhmuc');
+            return redirect()->route('admin.danhmuc');
         }
     }
 
@@ -107,7 +109,7 @@ class DanhMucController extends Controller
     {
         if(!empty($id)){
             $this->danhmuc->DeleteDanhMuc($id);
-            return redirect()->route('danhmuc');
+            return redirect()->route('admin.danhmuc');
         }
     }
 }

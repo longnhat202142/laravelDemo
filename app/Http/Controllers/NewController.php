@@ -8,7 +8,14 @@ class NewController extends Controller
 {
     public function index(){
 
-        $this->data['title'] = 'Trang News';
-        return view('clients.news', $this->data);
+        $thongbaoList = DB::table('tintuc')
+        ->where('IDLoai','1')
+        ->orderBy('NgayTao','DESC')
+        ->get();
+        $tintucList = DB::table('tintuc')
+                ->where('IDLoai','2')
+                ->orderBy('NgayTao','DESC')
+                ->get();
+        return view('components.component.news', compact('thongbaoList', 'tintucList'));     
     }
 }

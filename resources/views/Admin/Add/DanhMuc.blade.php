@@ -3,7 +3,7 @@
      {{-- content --}}
      <div class="content">
       <div class="row border border-3 rounded-3">
-        <form action="{{$list ? route('DanhMuc.Edit', [$list->IDDanhMuc]) : route('DanhMuc.Add') }}" class="col-12" style="padding: 15px 15px 7px 15px" enctype="multipart/form-data" method="POST">
+        <form action="{{$list ? route('admin.DanhMuc.Edit', [$list->IDDanhMuc]) : route('admin.DanhMuc.Add') }}" class="col-12" style="padding: 15px 15px 7px 15px" enctype="multipart/form-data" method="POST">
           @csrf
           @if ($list)
               @method('PUT')
@@ -25,7 +25,7 @@
                       <select name="IDCha" id="IDCha" class="form-control">
                           <option value="0" selected>--- Chuyên mục cha ---</option>
                           @foreach ($danhmucList as $item)
-                            <option value="{{$item->IDDanhMuc}}">{{$item->TieuDe}}</option>
+                            <option value="{{$item->IDDanhMuc}}" {{(isset($list) && $list->IDDanhMuc == $item->IDDanhMuc )? 'selected' : ''}}>{{$item->TieuDe}}</option>
                           @endforeach
                       </select>
                   </div>
@@ -46,7 +46,7 @@
               </div>
               <div style="margin-top: 5px">
                   {{-- <input type="submit" value="Lưu Bài viết" class="btn btn-outline-success"> --}}
-                  <button type="submit" class="btn btn-outline-success text-decoration-none">Lưu bài viết</button>
+                  <button type="submit" class="btn btn-outline-success text-decoration-none">Lưu</button>
                   {{-- xem trước --}}
               </div>
           </form>
@@ -55,4 +55,44 @@
       
   </div>
   {{-- end content --}}
+  <script>
+    function ChangeToSlug() {
+        var title, slug;
+  
+        // Lấy text từ thẻ input title 
+        title = document.getElementById("TieuDe").value;
+  
+        // Đổi chữ hoa thành chữ thường
+        slug = title.toLowerCase();
+  
+        // Đổi ký tự có dấu thành không dấu
+        slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+        slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+        slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+        slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+        slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+        slug = slug.replace(/đ/gi, 'd');
+  
+        // Xóa các ký tự đặc biệt
+        slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+        // Đổi khoảng trắng thành ký tự gạch ngang
+        slug = slug.replace(/ /gi, "-");
+        // Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+        slug = slug.replace(/\-\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-/gi, '-');
+        // Xóa các ký tự gạch ngang ở đầu và cuối
+        slug = '@' + slug + '@';
+        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+  
+        // In slug ra textbox có id “MaTinTuc”
+        document.getElementById('MaDanhMuc').value = slug;
+    }
+  
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('TieuDe').addEventListener('input', ChangeToSlug);
+    });
+  </script>
 @endsection

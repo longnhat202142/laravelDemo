@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Tin tức thông báo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href={{ asset('assets/clients/css/bootstrap.min.css') }} rel="stylesheet">
     <link href={{ asset('assets/clients/css/admin/add.css') }} rel="stylesheet">
     {{-- eidtor --}}
     <script src="https://cdn.tiny.cloud/1/gjpf1fcmnepdwbxadkqs2aouqo5jpz5c7zv1gcsz0o0g3a3l/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    
     <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
       <script>
+      
         var editor_config = {
           path_absolute : "/",
           selector: 'textarea.my-editor',
@@ -80,8 +81,13 @@
                         <hr>
                         <span>{{Auth::user()->email}}</span>
                         <hr>
-                        <a href="" class="text-decoration-none" style="color: #333333; margin-left: 5px"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
-                        </div>
+                        <a href="{{ route('admin.logout') }}" class="nav-link text-decoration-none" style="color: #333333; margin-left: 5px"
+                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
+                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                          @csrf
+                      </form>
+                      </div>
                       </ul>
                     </div>
                   {{-- end user --}}
@@ -121,45 +127,4 @@
 </body>
 <script href={{asset('assets/clients/js/bootstrap.min.css')}}></script>
 <script src="{{asset('assets/clients/js/editor.js')}}"></script>
-<script>
-  function ChangeToSlug() {
-      var title, slug;
-
-      // Lấy text từ thẻ input title 
-      title = document.getElementById("TieuDe").value;
-
-      // Đổi chữ hoa thành chữ thường
-      slug = title.toLowerCase();
-
-      // Đổi ký tự có dấu thành không dấu
-      slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
-      slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
-      slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
-      slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
-      slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
-      slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
-      slug = slug.replace(/đ/gi, 'd');
-
-      // Xóa các ký tự đặc biệt
-      slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
-      // Đổi khoảng trắng thành ký tự gạch ngang
-      slug = slug.replace(/ /gi, "-");
-      // Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
-      slug = slug.replace(/\-\-\-\-\-/gi, '-');
-      slug = slug.replace(/\-\-\-\-/gi, '-');
-      slug = slug.replace(/\-\-\-/gi, '-');
-      slug = slug.replace(/\-\-/gi, '-');
-      // Xóa các ký tự gạch ngang ở đầu và cuối
-      slug = '@' + slug + '@';
-      slug = slug.replace(/\@\-|\-\@|\@/gi, '');
-
-      // In slug ra textbox có id “MaTinTuc”
-      document.getElementById('MaDanhMuc').value = slug;
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('TieuDe').addEventListener('input', ChangeToSlug);
-  });
-</script>
-
 </html>

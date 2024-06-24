@@ -17,7 +17,7 @@
     .item_list{
       display: none;
       position:absolute;
-      background: white;
+      background: #ffffff;
       z-index: 1;
       transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động */
       transform: translateY(100%);
@@ -46,7 +46,7 @@
     height: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-    border-bottom: 20px solid white;
+    border-bottom: 20px solid #ffffff;
     top: -15px;
     left: 15px;
     z-index: -1;
@@ -59,13 +59,13 @@
       list-style:none;
       margin: 5px 0;
     }
-    .item_list-link{
+    .text-decoration-none{
       
       font-size: 18px;
       letter-spacing: 1px;
       color: #2c343b;
     }
-    .item_list-link:hover {
+    .text-decoration-none:hover {
       color: #d92727;
       transition:color 0.2s ease;
       text-decoration: none;
@@ -85,7 +85,7 @@
                     <div class="nav_item-link">
                     <h4 style=" letter-spacing: 1px;">
                     <a  class="nav-link active item_link " aria-current="page" href="{{route('home')}}">
-                    <i style="color:white" class="fa-solid fa-house-chimney"></i>
+                    <i style="color:#ffffff" class="fa-solid fa-house-chimney"></i>
                     </a>
                     </h4>
                     </div>
@@ -95,18 +95,18 @@
                 <li class="nav_item" style=" position: static;" id="container2">
                     <div>
                     <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link active item_link "  style="color:white;text-decoration: none;" aria-current="page" href="{{route('home')}}">GIỚI THIỆU</a>
+                    <a class="nav-link active item_link "  style="color:#ffffff;text-decoration: none;" aria-current="page" href="{{route('home')}}">GIỚI THIỆU</a>
                     </h4>
                     </div> 
                     <div class="item_list" >
                       <ul class="item_ul">
                         <li class="item_list-content">
-                            <a href="" class="item_list-link">
+                            <a href="https://husc.edu.vn/gioithieu.php?page_tag=gioithieu" class="text-decoration-none">
                             <i class="fa-solid fa-angle-right"></i> Tổng quan
                             </a>
                         </li>
                         <li class="item_list-content">
-                            <a href="" class="item_list-link">
+                            <a href="https://husc.edu.vn/cocautochuc.php" class="text-decoration-none">
                             <i class="fa-solid fa-angle-right"></i> Cơ cấu tổ chức
                             </a>
                         </li>
@@ -116,7 +116,7 @@
                 <li class="nav_item" style=" position: static;" id="container3">
                   <div>
                   <h4 style=" letter-spacing: 1px;"> 
-                    <a class="nav-link item_link" style="color:white;text-decoration: none;" href="#">TUYỂN SINH </a>
+                    <a class="nav-link item_link" style="color:#ffffff;text-decoration: none;" href="https://tuyensinh.husc.edu.vn/">TUYỂN SINH </a>
                     </h4>
                   </div>
 
@@ -125,24 +125,24 @@
                 <li class="nav_item" style=" position: static;" id="container4">
                     <div style="">
                     <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link item_link" style="color:white;text-decoration: none;" href="#">ĐÀO TẠO</a>
+                    <a class="nav-link item_link" style="color:#ffffff;text-decoration: none;" href="https://husc.edu.vn/nganhdaotao.dh.php">ĐÀO TẠO</a>
                     </h4>
                     </div>
                     
                     <div class="item_list">
                       <ul class="item_ul">
                       <li class="item_list-content">
-                            <a href="" class="item_list-link">
+                            <a href="https://husc.edu.vn/nganhdaotao.dh.php" class="text-decoration-none">
                             <i class="fa-solid fa-angle-right"></i> Đào tạo đại học
                             </a>
                         </li>
                         <li class="item_list-content">
-                            <a href="" class="item_list-link">
+                            <a href="https://husc.edu.vn/saudaihoc/viewpage.php?page_tag=nganhdaotao" class="text-decoration-none">
                             <i class="fa-solid fa-angle-right"></i> Đào tạo sau đại học
                             </a>
                         </li>
                         <li class="item_list-content">
-                            <a href="" class="item_list-link">
+                            <a href="https://husc.edu.vn/khaothi/articles.php?cat_id=35" class="text-decoration-none">
                             <i class="fa-solid fa-angle-right"></i> Công khai chất lượng GD
                             </a>
                         </li>
@@ -152,23 +152,23 @@
                 <li class="nav_item" style=" position: static;" id="container5">
                     <div>
                     <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link item_link" style="color:white;text-decoration: none;" href="#">KHOA HỌC CÔNG NGHỆ</a>
+                    <a class="nav-link item_link" style="color:#ffffff;text-decoration: none;" href="#">KHOA HỌC CÔNG NGHỆ</a>
                     </h4>
                     </div>
                     <div class="item_list">
                       <ul class="item_ul">
                       <li class="item_list-content">
-                            <a href="" class="item_list-link">
+                            <a href="" class="text-decoration-none">
                             <i class="fa-solid fa-angle-right"></i> Thông báo 
                             </a>
                         </li>
                         <li class="item_list-content">
-                            <a href="" class="item_list-link">
+                            <a href="" class="text-decoration-none">
                             <i class="fa-solid fa-angle-right"></i> Tin tức
                             </a>
                         </li>
                         <li class="item_list-content">
-                            <a href="" class="item_list-link">
+                            <a href="" class="text-decoration-none">
                             <i class="fa-solid fa-angle-right"></i> Danh mục đề tài hàng năm
                             </a>
                         </li>
@@ -179,23 +179,23 @@
                 <li class="nav_item" style=" position: static;" id="container6">
                     <div>
                     <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link item_link" style="color:white;text-decoration: none;" href="#">TIN TỨC,THÔNG BÁO</a>
+                    <a class="nav-link item_link" style="color:#ffffff;text-decoration: none;" href="#">TIN TỨC,THÔNG BÁO</a>
                     </h4>
                     </div>
                     <div class="item_list">
                       <ul class="item_ul">
                       <li class="item_list-content">
-                            <a href="" class="item_list-link">
+                            <a href="{{ url('tintuc') }}" class="text-decoration-none">
                             <i class="fa-solid fa-angle-right"></i> Tin tức
                             </a>
                         </li>
                         <li class="item_list-content">
-                            <a href="" class="item_list-link">
+                            <a href="{{url('thongbao')}}" class="text-decoration-none">
                             <i class="fa-solid fa-angle-right"></i> Thông báo 
                             </a>
                         </li>
                         <li class="item_list-content">
-                            <a href="" class="item_list-link">
+                            <a href="https://husc.edu.vn/tuyendung.php" class="text-decoration-none">
                             <i class="fa-solid fa-angle-right"></i> Thông tin tuyển dụng
                             </a>
                         </li>
@@ -205,24 +205,24 @@
                 </li>
                 <li class="nav_item" style=" position: static;" id="container7">
                     <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link item_link" style="color:white;text-decoration: none;" href="#">LỊCH CÔNG TÁC </a>
+                    <a class="nav-link item_link" style="color: #ffffff;text-decoration: none;" href="https://husc.edu.vn/oauth/login.php">LỊCH CÔNG TÁC </a>
                     </h4>
                 </li>
                 <li class="nav_item" style=" position: static;" id="container">
                     <div>
                     <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link item_link" style="color:white;text-decoration: none;" href="#">DỮ LIỆU </a>
+                    <a class="nav-link item_link" style="color:#ffffff;text-decoration: none;" href="https://husc.edu.vn/downloads.php">DỮ LIỆU </a>
                     </h4>
                     </div>
                     <div class="item_list">
                       <ul class="item_ul">
                       <li class="item_list-content">
-                            <a href="" class="item_list-link">
+                            <a href="https://husc.edu.vn/downloads.php" class="text-decoration-none">
                             <i class="fa-solid fa-angle-right"></i> Tải file, văn bản, biểu mẫu
                             </a>
                         </li>
                         <li class="item_list-content">
-                            <a href="" class="item_list-link">
+                            <a href="https://husc.edu.vn/nhandienthuonghieu/" class="text-decoration-none">
                             <i class="fa-solid fa-angle-right"></i>  Nhận dạng thương hiệu 
                             </a>
                         </li>
@@ -231,8 +231,8 @@
                 </li>
                 <li class="nav_item" style=" position: static;" id="container8">
                     <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link active item_link" aria-current="page" href="{{route('home')}}">
-                    <i style="color:white;text-decoration: none;" class="fa-solid fa-right-to-bracket"></i>
+                    <a class="nav-link active item_link" aria-current="page" href="{{route('admin.login')}}">
+                    <i style="color:#ffffff;text-decoration: none;" class="fa-solid fa-right-to-bracket"></i>
                     </a>
                     </h4>
                     
@@ -255,7 +255,7 @@
     if (scrollPosition > 100) { // Đổi 100 thành vị trí cuộn trang mong muốn
       // Thay đổi màu nền khi cuộn trang
       element.style.backgroundColor = '#143980'; // Màu đỏ (tùy chọn)
-      element.style.color = 'white'; // Màu văn bản (tùy chọn)
+      element.style.color = '#ffffff'; // Màu văn bản (tùy chọn)
     } else {
       // Nếu vị trí cuộn trang nhỏ hơn 100px, trở lại màu nền mặc định
       element.style.backgroundColor = ''; // Màu nền mặc định
