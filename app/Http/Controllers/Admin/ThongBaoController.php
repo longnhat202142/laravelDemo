@@ -21,12 +21,22 @@ class ThongBaoController extends Controller
     {
         $stt = 1;
         if(!empty($request->text)){
+            $loaitin = $this->thongbao->getLoai();
             $text = $request->text;
+            $pag = DB::table('tintuc')->paginate(5);
             $thongbaoList = $this->thongbao->SearchThongBao($text);
-            return view('admin.content.thongbao',compact('thongbaoList','stt', 'text'));
+            return view('admin.content.thongbao',compact('thongbaoList','stt', 'text','loaitin','pag'));
         }
+        if(!empty($request->IDLoai)){
+            $loaitin = $this->thongbao->getLoai();
+            $pag = DB::table('tintuc')->paginate(5);
+            $thongbaoList = $this->thongbao->getLoaiTin($request->IDLoai);
+            return view('admin.content.thongbao',compact('thongbaoList','stt','loaitin','pag'));
+        }
+        $pag = DB::table('tintuc')->paginate(5);
         $thongbaoList = $this->thongbao->getThongBao();
-        return view('admin.content.thongbao',compact('thongbaoList','stt'));
+        $loaitin = $this->thongbao->getLoai();
+        return view('admin.content.thongbao',compact('thongbaoList','stt','loaitin','pag'));
     }
 
     /**
@@ -34,7 +44,7 @@ class ThongBaoController extends Controller
      */
     public function create(Request $request)
     {
-        $request->session()->flash('back_url', route('thongbao'));
+        $request->session()->flash('back_url',route('admin.admin.thongbao'));
         $list = $this->thongbao->getDetail(0);
         return view('admin/Add/ThongBao', compact('list'));
     }
@@ -44,22 +54,37 @@ class ThongBaoController extends Controller
      */
     public function store(Request $request)
     {
-        if(!empty($request->TieuDe) &&  !empty($request->NoiDung)){
-           $data=[
-            'MaTinTuc' => $request->MaTinTuc,
-            'TieuDe' => $request->TieuDe,
-            'NoiDung' => $request->NoiDung,
-            'IDNguoiTao' => Auth::user()->id,
-            'NgayTao' => now()->format('Y-m-d H:i:s'),
-            'TinNong' => $request->TinNong,
-            'IDDanhMuc' => $request->IDDanhMuc,
-            'IDLoai' => $request->IDLoai
-           ];
-           $this->thongbao->AddThongBao($data);
-           return redirect()->route('thongbao');
+        if(!empty($request->TieuDe) && !empty($request->NoiDung) && !empty($request->TomTat) && $request->hasFile('Anh')){
+            //    ảnh
+            if(!empty($id)){
+                    $Anh = $request->file('Anh');
+                    $extensionAnh = $Anh->getClientOriginalExtension();
+                    $Anhname = now()->format('dmYHis') .'.'.$extensionAnh;
+                    $Anh->move('public/storage/AnhDaiDien/', $Anhname);
+                     //    end ảnh
+                    $file = $request->file('File');
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = now()->format('dmYHis') .'.'.$extension;
+                    $file->move('public/storage/file/', $filename);
+                }
+                $data=[
+                 'MaTinTuc' => $request->MaTinTuc,
+                 'TieuDe' => $request->TieuDe,
+                 'TomTat' => $request->TomTat,
+                 'NoiDung' => $request->NoiDung,
+                 'IDNguoiTao' => Auth::user()->id,
+                 'NgayTao' => now()->format('Y-m-d H:i:s'),
+                 'TinNong' => $request->TinNong,
+                 'TrangThai' => $request->TrangThai,
+                 'IDDanhMuc' => $request->IDDanhMuc,
+                //  'Anh'=>$Anhname,
+                //  'File'=>$filename,
+                 'IDLoai' => $request->IDLoai
+                ];
+                $this->thongbao->AddThongBao($data);
+           return redirect()->route('admin.thongbao');
         }
     }
-
     /**
      * xem trước
      */
@@ -77,7 +102,7 @@ class ThongBaoController extends Controller
      */
     public function edit(Request $request,$id)
     {
-        $request->session()->flash('back_url', route('thongbao'));
+        $request->session()->flash('back_url',route('admin.thongbao'));
         if(!empty($id)){
             $list = $this->thongbao->getDetail($id);
             // $noidung = $this->thongbao->getNoiDung($id);
@@ -90,19 +115,37 @@ class ThongBaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(!empty($id)){
+         //    ảnh
+         if(!empty($id)){
+            if($request->hasFile('Anh')){
+                $Anh = $request->file('Anh');
+                $extensionAnh = $Anh->getClientOriginalExtension();
+                $Anhname = now()->format('dmYHis') .'.'.$extensionAnh;
+                $Anh->move('public/storage/AnhDaiDien/', $Anhname);
+                 //    end ảnh
+            }else $Anhname = $request->img;
+            if($request->hasFile('File')){
+                $file = $request->file('File');
+                $extension = $file->getClientOriginalExtension();
+                $filename = now()->format('dmYHis') .'.'.$extension;
+                $file->move('public/storage/file/', $filename);
+            }else $filename = '';
             $data = [
             'MaTinTuc' => $request->MaTinTuc,
             'TieuDe' => $request->TieuDe,
+            'TomTat' => $request->TomTat,
             'NoiDung' => $request->NoiDung,
             'IDNguoiCapNhat' =>Auth::user()->id,
             'NgayCapNhat' => now()->format('Y-m-d H:i:s'),
             'TinNong' => $request->TinNong,
+            'TrangThai' => $request->TrangThai,
             'IDDanhMuc' => $request->IDDanhMuc,
+            'Anh'=>$Anhname,
+            'File'=>$filename,
             'IDLoai' => $request->IDLoai
             ];
             $this->thongbao->UpdateThongBao($id,$data);
-            return redirect()->route('thongbao');
+            return redirect()->route('admin.thongbao');
         }
     }
 
@@ -113,7 +156,7 @@ class ThongBaoController extends Controller
     {
         if(!empty($id)){
             $this->thongbao->DeleteThongBao($id);
-            return redirect()->route('thongbao');
+            return redirect()->route('admin.thongbao');
         }
     }
     

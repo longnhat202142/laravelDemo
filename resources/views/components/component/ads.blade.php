@@ -32,7 +32,8 @@
     </style>
 </head>
 <body>
-    <div class="container" style="height:200px;border:1px solid black;display:flex">
+    {{-- quảng cáo --}}
+    <div class="container" style="height:200px;display:flex">
         <div class="container_wrapper">
             <div class="box_body">
                 <div class="box_body-img">
@@ -86,7 +87,14 @@ function showSlides() {
   let cloneFirstSlide = slides[0].cloneNode(true);
   document.querySelector('.box_body').appendChild(cloneFirstSlide);
 
-  let offset = -slideIndex * slides[0].offsetWidth;
+  let offset = -slideIndex * slides[1].offsetWidth;
+ 
+  console.log(totalSlides);
+  console.log(cloneFirstSlide);
+  
+//   totalSlides = 0 ;
+  
+
   document.querySelector('.box_body').style.transition = 'transform 0.5s ease';
   document.querySelector('.box_body').style.transform = `translateX(${offset}px)`;
 

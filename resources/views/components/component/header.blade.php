@@ -231,7 +231,7 @@
                 </li>
                 <li class="nav_item" style=" position: static;" id="container8">
                     <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link active item_link" aria-current="page" href="{{route('login')}}">
+                    <a class="nav-link active item_link" aria-current="page" href="{{route('admin.login')}}">
                     <i style="color:#ffffff;text-decoration: none;" class="fa-solid fa-right-to-bracket"></i>
                     </a>
                     </h4>

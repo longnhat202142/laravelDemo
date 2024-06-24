@@ -3,13 +3,14 @@
         font-family: Arial, sans-serif;
     }
     .sidebar {
+        font-size: x-large;
         height: 100vh;
         position: fixed;
         top: 50px;
         left: 0;
         background-color: #143980;
-        padding: 40px 0 0 30px;
-        width: 250px;
+        padding-top:50px;
+        width: 4%;
         overflow-y: auto; 
     }
     .sidebar h3{
@@ -18,16 +19,14 @@
     }
     .nav-item a{
         color: #f2f2f2 ;
-        transition: font-size 0.7s;
     }
     .nav-item a:hover{
-        font-size: 17px ;
         color: rgb(175, 234, 234);
     }
     .content {
-        padding: 40px 0 0 0;
-        margin: 50px 315px;
-        width: 75%;
+        padding: 50px 0 0 0;
+        margin: 50px 70px;
+        width: 100%;
     }
     .actions img {
         width: 20px;
@@ -81,4 +80,5 @@
     .table-head th{
         color: #143980;
     }
+    
 /* end Trang quản lý */

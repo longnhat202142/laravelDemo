@@ -23,27 +23,31 @@
                       <div class="navbar-nav me-auto"> 
                       </div>
                       {{-- user --}}
+                      @if (isset(Auth::user()->name))
                         <div class="dropdown ">
-                          <button class=" rounded-pill btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/800px-User_icon_2.svg.png" alt="" style="height: 30px; width: 30px">
-                            {{Auth::user()->name}}
-                          </button>
-                          <ul class="dropdown-menu">
-                            <div class="us">
-                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/800px-User_icon_2.svg.png" alt="" style="height: 30px; width: 30px; margin-left: 5px">
-                             {{Auth::user()->name}}
-                            <hr>
-                            <span>{{Auth::user()->email}}</span>
-                            <hr>
-                            <a href="{{ route('logout') }}" class="nav-link text-decoration-none" style="color: #333333; margin-left: 5px"
-                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                              @csrf
-                          </form>
-                            </div>
-                          </ul>
+                            <button class=" rounded-pill btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/800px-User_icon_2.svg.png" alt="" style="height: 30px; width: 30px">
+                               {{Auth::user()->name}}
+                            </button>
+                            <ul class="dropdown-menu">
+                              <div class="us">
+                               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/800px-User_icon_2.svg.png" alt="" style="height: 30px; width: 30px; margin-left: 5px">
+                               {{Auth::user()->name}}
+                              <hr>
+                              <span>{{Auth::user()->email}}</span>
+                              <hr>
+                              <a href="{{ route('admin.logout') }}" class="nav-link text-decoration-none" style="color: #333333; margin-left: 5px"
+                              onclick="event.preventDefault();
+                                                       document.getElementById('logout-form').submit();"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
+                              <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                                @csrf
+                              </form>
+                              </div>
+                            </ul>
                         </div>
+                      @else
+                      <a href="{{ route('admin.login') }}" class="text-decoration-none" style="color: #333333;">Quay lại</a>
+                      @endif
                       {{-- end user --}}
                     </div>
                   </div>
@@ -52,22 +56,27 @@
     {{-- end navbar --}}
     {{-- sidebar --}}
         <div class="sidebar">
-            <h3>Quản lý</h3>
             <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link" href="#">Trang chủ</a></li>
-                {{-- <li class="nav-item"><a class="nav-link" href="{{ route('danhmuc') }}">Quản lý danh mục</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('quangcao') }}">Quản lý quảng cáo</a></li> --}}
-                <li class="nav-item"><a class="nav-link" href="{{ route('danhmuc') }}">Quản lý danh mục</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('thongbao') }}">Quản lý tin tức thông báo</a></li>
-                {{-- <li class="nav-item"><a class="nav-link" href="{{ route('tintuc') }}">Quản lý tin tức</a></li> --}}
-                <li class="nav-item"><a class="nav-link" href="{{ route('menu') }}">Quản lý menu</a></li>
+              @can('')
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i><p style="font-size: xx-small; width: max-content; margin-left: -8px">Trang chủ</p></a></li>
+              @endcan
+              @can('admin.danhmuc')
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin.danhmuc') }}"><i class="fa-solid fa-layer-group"></i><p style="font-size: xx-small; width: max-content; margin-left: -8px">Danh mục</p></a></li>
+              @endcan
+              @can('admin.thongbao')
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin.thongbao') }}"><i class="fa-regular fa-newspaper"></i><p style="font-size: xx-small; width: max-content; margin-left: -2px">Tin tức</p></a></li>
+              @endcan
+              @can('admin.user')
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin.user') }}"><i class="fa-solid fa-user"></i><p style="font-size: xx-small; width: max-content; margin-left: -8px">Người dùng</p></a></li>
+              @endcan
+              @can('admin.vaitro')
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin.vaitro') }}"><i class="fa-solid fa-address-book"></i><p style="font-size: xx-small; width: max-content; margin-left: -2px">Vai trò</p></a></li>
+              @endcan
             </ul>
         </div>
     {{-- endsidebar --}}
     <div class="content">
-          @yield('menu')
-          @yield('thongbao')
-          @yield('danhmuc')
+          @yield('content')
     </div>
 </body>
 <script href={{asset('assets/clients/js/bootstrap.min.js')}}></script>

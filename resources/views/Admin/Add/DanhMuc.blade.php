@@ -3,7 +3,7 @@
      {{-- content --}}
      <div class="content">
       <div class="row border border-3 rounded-3">
-        <form action="{{$list ? route('DanhMuc.Edit', [$list->IDDanhMuc]) : route('DanhMuc.Add') }}" class="col-12" style="padding: 15px 15px 7px 15px" enctype="multipart/form-data" method="POST">
+        <form action="{{$list ? route('admin.DanhMuc.Edit', [$list->IDDanhMuc]) : route('admin.DanhMuc.Add') }}" class="col-12" style="padding: 15px 15px 7px 15px" enctype="multipart/form-data" method="POST">
           @csrf
           @if ($list)
               @method('PUT')
@@ -46,7 +46,7 @@
               </div>
               <div style="margin-top: 5px">
                   {{-- <input type="submit" value="Lưu Bài viết" class="btn btn-outline-success"> --}}
-                  <button type="submit" class="btn btn-outline-success text-decoration-none">Lưu bài viết</button>
+                  <button type="submit" class="btn btn-outline-success text-decoration-none">Lưu</button>
                   {{-- xem trước --}}
               </div>
           </form>

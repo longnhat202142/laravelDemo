@@ -25,8 +25,8 @@
          @if (isset($baiviet)&&$baiviet != null)
          <div style="font-size: 15px">{!!$baiviet->NoiDung!!}</div>
          @else
-           @foreach (DB::table('tintuc')->where('IDLoai','1')->orderBy('NgayTao','DESC')->get() as $item)
-           <div class="item">
+           @foreach ($list as $item)
+           <div class="item" style="margin-top: 15px">
              <i class="fa-regular fa-file-lines"></i>
              <div class="content">
                  <a class="text-decoration-none" href="{{ route('search_detail_tb', ['id'=>$item->IDTinTuc]) }}">
@@ -51,10 +51,10 @@
         <p style="font-size: 10x">
           <i class="fa-regular fa-user"></i>
         Người đăng:
-        {{DB::table('users')->where('id',$baiviet->IDNguoiTao)->value('name')}}
+        {{$user}}
         </p>
         <p style="font-size: 10px">
-          Được đăng ở: {{DB::table('danhmuc')->where('IDDanhMuc',$baiviet->IDDanhMuc)->value('TieuDe')}}
+          Được đăng ở: {{$palace}}
         </p>
       </div>
     @else

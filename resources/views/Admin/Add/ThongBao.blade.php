@@ -3,7 +3,7 @@
      {{-- content --}}
      <div class="content">
       <div class="row border border-3 rounded-3">
-        <form action="{{$list ? route('ThongBao.Edit', [$list->IDTinTuc]) : route('ThongBao.Add') }}" class="col-12" style="padding: 15px 15px 7px 15px" enctype="multipart/form-data" method="POST">
+        <form action="{{$list ? route('admin.ThongBao.Edit', [$list->IDTinTuc]) : route('admin.ThongBao.Add') }}" class="col-12" style="padding: 15px 15px 7px 15px" enctype="multipart/form-data" method="POST">
           @csrf
           @if ($list)
               @method('PUT')
@@ -41,12 +41,29 @@
                       </label>
                     </div>
                   </div>
+                  <div class="col">
+                    <div class="form-check ">
+                      <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" {{(isset($list) && $list->TrangThai == 1)? 'checked' : ''}} name="TrangThai">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Hoạt động
+                      </label>
+                    </div>
+                  </div>
               </div>
-              
-                
-                
-              {{-- editor --}}
-              <textarea name="NoiDung" class="form-control my-editor" rows="18">{{ $list ? htmlspecialchars_decode($list->NoiDung) : '' }}</textarea>
+
+                <div class="form-group">
+                  <label for="formFile" class="form-label">File đính kèm</label>
+                  <input class="form-control" type="file" id="formFile" name="File" multiple >
+                </div>
+                  <div class="form-group">
+                    <label for="formFile" class="form-label">Ảnh đại diện</label>
+                    <input type="hidden" name="img" value="{{isset($list) ? $list->Anh: ""}}">
+                    <input class="form-control" type="file"  id="currentImage" name="Anh" accept="image/*" onchange="chooseFile(this)">
+                    <img src="{{ isset($list) ? asset('public/storage/AnhDaiDien/' . $list->Anh) : 'https://duonganh.com.vn/en/admin/assets/images/404.png' }}" id="img" alt="" style="margin-top:5px; max-width: 100px; max-height: 100px; ">
+                  </div>
+                  {{-- editor --}}
+                  <textarea name="TomTat" class="form-control my-editor" rows="10" placeholder="soạn tóm tắt...">{{ $list ? htmlspecialchars_decode($list->TomTat) : '' }}</textarea>
+                  <textarea name="NoiDung" class="form-control my-editor" rows="25" placeholder="soạn nội dung...">{{ $list ? htmlspecialchars_decode($list->NoiDung) : '' }}</textarea>
               {{-- end editor --}}
               <div style="margin-top: 5px">
                   {{-- <input type="submit" value="Lưu Bài viết" class="btn btn-outline-success"> --}}
@@ -121,5 +138,16 @@
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('TieuDe').addEventListener('input', ChangeToSlug);
     });
+  </script>
+  <script>
+    function chooseFile(fileInput) {
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('img').src = e.target.result;
+            }
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
   </script>
 @endsection

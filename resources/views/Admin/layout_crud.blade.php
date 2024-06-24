@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Tin tức thông báo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href={{ asset('assets/clients/css/bootstrap.min.css') }} rel="stylesheet">
     <link href={{ asset('assets/clients/css/admin/add.css') }} rel="stylesheet">
     {{-- eidtor --}}
     <script src="https://cdn.tiny.cloud/1/gjpf1fcmnepdwbxadkqs2aouqo5jpz5c7zv1gcsz0o0g3a3l/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    
     <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
       <script>
+      
         var editor_config = {
           path_absolute : "/",
           selector: 'textarea.my-editor',
@@ -80,10 +81,10 @@
                         <hr>
                         <span>{{Auth::user()->email}}</span>
                         <hr>
-                        <a href="{{ route('logout') }}" class="nav-link text-decoration-none" style="color: #333333; margin-left: 5px"
+                        <a href="{{ route('admin.logout') }}" class="nav-link text-decoration-none" style="color: #333333; margin-left: 5px"
                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                           @csrf
                       </form>
                       </div>

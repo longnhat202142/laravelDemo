@@ -86,4 +86,8 @@
     li{
         padding-bottom: 10px;
     }
+    
+    div.news-content img {
+        max-width: 100% !important;
+    }
 /* {{-- end trang thông báo --}} */
