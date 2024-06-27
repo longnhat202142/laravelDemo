@@ -34,15 +34,15 @@
     <!-- Wrapper for slides -->
       <div class="box">
       <div class="carousel-inner" style="max-height: 350px" >
-      <div class="item active">
+      <div style="margin:0" class="item active">
         <img  src="{{asset('assets/clients/img/cover0.jpg')}}" alt="" style="width:100%">
       </div>
 
-      <div class="item">
+      <div style="margin:0" class="item">
         <img  src="{{asset('assets/clients/img/cover5.jpg')}}" alt="" style="width:100%;">
       </div>
     
-      <div class="item">
+      <div style="margin:0" class="item">
         <img  src="{{asset('assets/clients/img/cover7.jpg')}}" alt="" style="width:100%;">
       </div>
     </div>

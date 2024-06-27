@@ -15,7 +15,7 @@
         <x-component.slide-img/>
      {{-- trang Thông báo --}}
      <div class="news-all">
-        <div class="container">
+        <div class="container d-flex">
           @yield('content')
             <div class="col-4 sidebar-all" style="height: 500px">
               <div class="card" style="border: 0">

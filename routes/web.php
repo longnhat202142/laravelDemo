@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\NhomController;
 use App\Http\Controllers\Admin\VaiTroController;
 use App\Http\Controllers\Admin\QuyenController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\Change_passController;
 use Illuminate\Support\Facades\DB;
 
 //admin
@@ -80,9 +81,12 @@ Route::get('error', function () {
       Route::get('/login',[LoginController::class,'showLoginForm'])->name('login');
       Route::post('/login',[LoginController::class,'login']);
       Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+      //Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
       Route::post('/register', [RegisterController::class, 'create'])->name('register');
       Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-    
+    //đổi mật khẩu 
+      Route::post('/change_pass',[Change_passController::class,'check_change_pass']);
+      Route::get('/change_pass',[Change_passController::class,'change_pass'])->name('change_pass');
   });
   Route::group(['prefix' => 'laravel-filemanager', 'middleware'], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
@@ -105,3 +109,4 @@ Route::get('/',[HomeController::class,'index'])->name('home');
     Route::get('/tintuc', [HomeController::class,'TinTuc'])->name('tintuc');
     Route::get('/tintuc/{id}/{cm?}', [HomeController::class,'SearchDetail_Tt'])->name('search_detail_tt');
 //end tin tức 
+//đổi mật khẩu 
