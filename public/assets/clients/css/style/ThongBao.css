@@ -69,15 +69,10 @@
         color: #333333;
         font-size: 15px;
         font-weight: 600;
-        transition: padding 0.8s;
-        font-family: system-ui;
         
     }
     .cm:hover{
         color: #D92727;
-        font-size: 15px;
-        font-weight: 600;
-        padding-left: 1rem;
     }
     ul{
         padding-left: 0rem;

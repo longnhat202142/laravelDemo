@@ -50,7 +50,15 @@
                             <td>{{$item->NgayTao}}</td>
                             <td>{{$item->IdNguoiCapNhat}}</td>
                             <td>{{$item->NgayCapNhat}}</td>
-                            <td>{{DB::table('danhmuc')->where('IDCha',$item->IDCha)->value('TieuDe') }}</td>
+                            <td>
+                                @if ($item->IDCha != 0)
+                                <span style="font-weight: 600; font-size: 12px;color: #983013">
+                                    {{DB::table('danhmuc')->where('IDDanhMuc',$item->IDCha)->value('TieuDe') }}
+                                </span>
+                                @else
+                                    <span style="font-weight: 600; font-size: 12px;color: #134098">----------</span>
+                                @endif
+                            </td>
                             <td>{{$item->TrangThai}}</td>
                             <td class="actions" style="display: flex">
                                 @can('admin.DanhMuc.Delete')

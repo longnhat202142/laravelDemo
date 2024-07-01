@@ -36,7 +36,7 @@ class DanhMucController extends Controller
     {
         $request->session()->flash('back_url', route('admin.danhmuc'));
         $list = $this->danhmuc->getDetail(0);
-        $danhmucList = $this->danhmuc->getDanhMuc();
+        $danhmucList = $this->danhmuc->getDanhMucCha(0);
         return view('admin.Add.DanhMuc', compact('list','danhmucList'));
     }
 
@@ -75,7 +75,7 @@ class DanhMucController extends Controller
     public function edit(Request $request, $id)
     {
         $request->session()->flash('back_url', route('admin.danhmuc'));
-        $danhmucList = $this->danhmuc->getDanhMuc();
+        $danhmucList = $this->danhmuc->getDanhMucCha($id);
         if(!empty($id)){
             $list = $this->danhmuc->getDetail($id);
         }else return 'lỗi';

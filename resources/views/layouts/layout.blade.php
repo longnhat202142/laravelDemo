@@ -22,10 +22,29 @@
                 <div class="card-body" style="background-color: #f6f6f6">
                   <div class="card-title">CHUYÊN MỤC</div>
                   <ul>
-                  @foreach ($listDM as $item)
-                    <li style=" list-style-type: none;">
-                      <a class="text-decoration-none cm" href="{{ route('ThongBao', [$item->IDDanhMuc]) }}">{{$item->TieuDe}}</a>
-                    </li>
+                  @foreach (DB::table('DanhMuc')->where('IDCha', 0)->get() as $item)
+                    @if ($item->IDCha == 0)
+                      <li style=" list-style-type: none;">
+                        @if ($url == 'http://127.0.0.1:8000/thongbao')
+                          <a class="text-decoration-none cm" href="{{ route('ThongBao', [$item->IDDanhMuc]) }}">{{$item->TieuDe}}</a>
+                        @else
+                          <a class="text-decoration-none cm" href="{{ route('tintuc', [$item->IDDanhMuc]) }}">{{$item->TieuDe}}</a>
+                        @endif
+                        @foreach (DB::table('DanhMuc')->where('IDCha','<>',0)->get() as $chil)
+                          @if ($chil->IDCha == $item->IDDanhMuc)
+                            <ul>
+                              <li>
+                                @if ($url == 'http://127.0.0.1:8000/tintuc')
+                                  <a class="text-decoration-none cm" href="{{ route('tintuc', [$chil->IDDanhMuc]) }}">{{$chil->TieuDe}}</a>
+                                @else
+                                <a class="text-decoration-none cm" href="{{ route('ThongBao', [$chil->IDDanhMuc]) }}">{{$chil->TieuDe}}</a>
+                              @endif
+                              </li>
+                            </ul>
+                          @endif
+                        @endforeach  
+                        </li>
+                      @endif
                   @endforeach
                   </ul>
                   <hr style="color: #aca9a9">

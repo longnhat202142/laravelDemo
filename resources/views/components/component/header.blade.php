@@ -92,140 +92,62 @@
                     
                     
                 </li>
-                <li class="nav_item" style=" position: static;" id="container2">
-                    <div>
-                    <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link active item_link "  style="color:#ffffff;text-decoration: none;" aria-current="page" href="{{route('home')}}">GIỚI THIỆU</a>
-                    </h4>
-                    </div> 
-                    <div class="item_list" >
-                      <ul class="item_ul">
-                        <li class="item_list-content">
-                            <a href="https://husc.edu.vn/gioithieu.php?page_tag=gioithieu" class="text-decoration-none">
-                            <i class="fa-solid fa-angle-right"></i> Tổng quan
-                            </a>
-                        </li>
-                        <li class="item_list-content">
-                            <a href="https://husc.edu.vn/cocautochuc.php" class="text-decoration-none">
-                            <i class="fa-solid fa-angle-right"></i> Cơ cấu tổ chức
-                            </a>
-                        </li>
-                      </ul>
-                    </div>
-                </li>
                 <li class="nav_item" style=" position: static;" id="container3">
                   <div>
                   <h4 style=" letter-spacing: 1px;"> 
-                    <a class="nav-link item_link" style="color:#ffffff;text-decoration: none;" href="https://tuyensinh.husc.edu.vn/">TUYỂN SINH </a>
+                    <a class="nav-link item_link" style="color:#ffffff;text-decoration: none;" href="{{ route('ThongBao') }}">THÔNG BÁO </a>
                     </h4>
                   </div>
-
+                  <div class="item_list">
+                    <ul class="item_ul">
+                      @foreach (DB::table('danhmuc')->get() as $item)
+                        @if ($item->IDCha == 0)
+                          <li class="item_list-content">
+                                <a href="{{ route('search_detail_tb', ['id' ,'ChuyenMuc'=>$item->IDDanhMuc]) }}" class="text-decoration-none">
+                                <i class="fa-solid fa-angle-right"></i> {{$item->TieuDe}} 
+                                </a>
+                                @foreach (DB::table('DanhMuc')->where('IDCha','<>',0)->get() as $chil)
+                                  @if ($chil->IDCha == $item->IDDanhMuc)
+                                    <ul>
+                                      <a href="{{ route('search_detail_tb', ['id' ,'ChuyenMuc'=>$chil->IDDanhMuc]) }}" class="text-decoration-none">
+                                        <i class="fa-solid fa-angle-right"></i> {{$chil->TieuDe}} 
+                                      </a>
+                                    </ul>
+                                  @endif
+                                @endforeach
+                          </li>
+                        @endif
+                      @endforeach
+                    </ul>
+                  </div>
                     
                 </li>
                 <li class="nav_item" style=" position: static;" id="container4">
                     <div style="">
                     <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link item_link" style="color:#ffffff;text-decoration: none;" href="https://husc.edu.vn/nganhdaotao.dh.php">ĐÀO TẠO</a>
-                    </h4>
-                    </div>
-                    
-                    <div class="item_list">
-                      <ul class="item_ul">
-                      <li class="item_list-content">
-                            <a href="https://husc.edu.vn/nganhdaotao.dh.php" class="text-decoration-none">
-                            <i class="fa-solid fa-angle-right"></i> Đào tạo đại học
-                            </a>
-                        </li>
-                        <li class="item_list-content">
-                            <a href="https://husc.edu.vn/saudaihoc/viewpage.php?page_tag=nganhdaotao" class="text-decoration-none">
-                            <i class="fa-solid fa-angle-right"></i> Đào tạo sau đại học
-                            </a>
-                        </li>
-                        <li class="item_list-content">
-                            <a href="https://husc.edu.vn/khaothi/articles.php?cat_id=35" class="text-decoration-none">
-                            <i class="fa-solid fa-angle-right"></i> Công khai chất lượng GD
-                            </a>
-                        </li>
-                      </ul>
-                    </div>
-                </li>
-                <li class="nav_item" style=" position: static;" id="container5">
-                    <div>
-                    <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link item_link" style="color:#ffffff;text-decoration: none;" href="#">KHOA HỌC CÔNG NGHỆ</a>
+                    <a class="nav-link item_link" style="color:#ffffff;text-decoration: none;" href="{{ route('tintuc') }}">TIN TỨC</a>
                     </h4>
                     </div>
                     <div class="item_list">
                       <ul class="item_ul">
-                      <li class="item_list-content">
-                            <a href="" class="text-decoration-none">
-                            <i class="fa-solid fa-angle-right"></i> Thông báo 
-                            </a>
-                        </li>
-                        <li class="item_list-content">
-                            <a href="" class="text-decoration-none">
-                            <i class="fa-solid fa-angle-right"></i> Tin tức
-                            </a>
-                        </li>
-                        <li class="item_list-content">
-                            <a href="" class="text-decoration-none">
-                            <i class="fa-solid fa-angle-right"></i> Danh mục đề tài hàng năm
-                            </a>
-                        </li>
-                      </ul>
-                    </div>
-                    
-                </li>
-                <li class="nav_item" style=" position: static;" id="container6">
-                    <div>
-                    <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link item_link" style="color:#ffffff;text-decoration: none;" href="#">TIN TỨC,THÔNG BÁO</a>
-                    </h4>
-                    </div>
-                    <div class="item_list">
-                      <ul class="item_ul">
-                      <li class="item_list-content">
-                            <a href="{{ url('tintuc') }}" class="text-decoration-none">
-                            <i class="fa-solid fa-angle-right"></i> Tin tức
-                            </a>
-                        </li>
-                        <li class="item_list-content">
-                            <a href="{{url('thongbao')}}" class="text-decoration-none">
-                            <i class="fa-solid fa-angle-right"></i> Thông báo 
-                            </a>
-                        </li>
-                        <li class="item_list-content">
-                            <a href="https://husc.edu.vn/tuyendung.php" class="text-decoration-none">
-                            <i class="fa-solid fa-angle-right"></i> Thông tin tuyển dụng
-                            </a>
-                        </li>
-                      </ul>
-                    </div>
-                    
-                </li>
-                <li class="nav_item" style=" position: static;" id="container7">
-                    <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link item_link" style="color: #ffffff;text-decoration: none;" href="https://husc.edu.vn/oauth/login.php">LỊCH CÔNG TÁC </a>
-                    </h4>
-                </li>
-                <li class="nav_item" style=" position: static;" id="container">
-                    <div>
-                    <h4 style=" letter-spacing: 1px;">
-                    <a class="nav-link item_link" style="color:#ffffff;text-decoration: none;" href="https://husc.edu.vn/downloads.php">DỮ LIỆU </a>
-                    </h4>
-                    </div>
-                    <div class="item_list">
-                      <ul class="item_ul">
-                      <li class="item_list-content">
-                            <a href="https://husc.edu.vn/downloads.php" class="text-decoration-none">
-                            <i class="fa-solid fa-angle-right"></i> Tải file, văn bản, biểu mẫu
-                            </a>
-                        </li>
-                        <li class="item_list-content">
-                            <a href="https://husc.edu.vn/nhandienthuonghieu/" class="text-decoration-none">
-                            <i class="fa-solid fa-angle-right"></i>  Nhận dạng thương hiệu 
-                            </a>
-                        </li>
+                        @foreach (DB::table('danhmuc')->get() as $item)
+                          @if ($item->IDCha == 0)
+                            <li class="item_list-content">
+                                  <a href="{{ route('search_detail_tt', ['id' ,'ChuyenMuc'=>$item->IDDanhMuc]) }}" class="text-decoration-none">
+                                  <i class="fa-solid fa-angle-right"></i> {{$item->TieuDe}} 
+                                  </a>
+                                  @foreach (DB::table('DanhMuc')->where('IDCha','<>',0)->get() as $chil)
+                                    @if ($chil->IDCha == $item->IDDanhMuc)
+                                      <ul>
+                                        <a href="{{ route('search_detail_tt', ['id' ,'ChuyenMuc'=>$chil->IDDanhMuc]) }}" class="text-decoration-none">
+                                          <i class="fa-solid fa-angle-right"></i> {{$chil->TieuDe}} 
+                                        </a>
+                                      </ul>
+                                    @endif
+                                  @endforeach
+                            </li>
+                          @endif
+                        @endforeach
                       </ul>
                     </div>
                 </li>
