@@ -15,7 +15,9 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" disabled class="form-control @error('email')  is-invalid @enderror"  name="email" value="{{ Auth::user()->email }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" disabled
+                                    class="form-control @error('email')  is-invalid @enderror" name="email"
+                                    value="{{ Auth::user()->email }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -26,10 +28,13 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Mật khẩu cũ') }}</label>
+                            <label for="password"
+                                class="col-md-4 col-form-label text-md-end">{{ __('Mật khẩu cũ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="old_password" type="password" class="form-control @error('old_password') is-invalid @enderror" name="old_password" required autocomplete="current-password">
+                                <input id="old_password" type="password"
+                                    class="form-control @error('old_password') is-invalid @enderror" name="old_password"
+                                    required autocomplete="current-password">
 
                                 @error('old_password')
                                     <span class="invalid-feedback" role="alert">
@@ -39,10 +44,13 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Mật khẩu mới') }}</label>
+                            <label for="password"
+                                class="col-md-4 col-form-label text-md-end">{{ __('Mật khẩu mới') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password"
+                                    required autocomplete="current-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -52,10 +60,13 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="confirm_password" class="col-md-4 col-form-label text-md-end">{{ __('Nhập lại mật khẩu mới') }}</label>
+                            <label for="confirm_password"
+                                class="col-md-4 col-form-label text-md-end">{{ __('Nhập lại mật khẩu mới') }}</label>
 
                             <div class="col-md-6">
-                                <input id="confirm_password" type="password" class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password" required autocomplete="current-password">
+                                <input id="confirm_password" type="password"
+                                    class="form-control @error('confirm_password') is-invalid @enderror"
+                                    name="confirm_password" required autocomplete="current-password">
 
                                 @error('confirm_password')
                                     <span class="invalid-feedback" role="alert">
@@ -65,7 +76,7 @@
                             </div>
                         </div>
 
-                        
+
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
@@ -73,7 +84,7 @@
                                     {{ __('Đổi mật khẩu ') }}
                                 </button>
 
-                               
+
                             </div>
                         </div>
                     </form>

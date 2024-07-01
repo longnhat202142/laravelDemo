@@ -40,7 +40,7 @@
       </a>
       <div class="img">
       </div>
-      <div class="content-list">
+      <div class="content-list" style="width:fit-content">
       <h4>
       @if($item->TinNong == 1)
       <i class="fa-solid fa-fire" style="color: rgb(255, 94, 0)"></i>
