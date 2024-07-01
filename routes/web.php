@@ -103,10 +103,10 @@ Route::get('/header', function(){
 Route::get('/',[HomeController::class,'index'])->name('home');
 // thông báo
     Route::get('/thongbao', [HomeController::class,'ThongBao'])->name('ThongBao');
-    Route::get('/thongbao/{id?}/{cm?}', [HomeController::class,'SearchDetail_Tb'])->name('search_detail_tb');
+    Route::get('/thongbao/{id?}/{ChuyenMuc?}', [HomeController::class,'SearchDetail_Tb'])->name('search_detail_tb');
 // end thông báo
 //tin tức 
     Route::get('/tintuc', [HomeController::class,'TinTuc'])->name('tintuc');
-    Route::get('/tintuc/{id}/{cm?}', [HomeController::class,'SearchDetail_Tt'])->name('search_detail_tt');
+    Route::get('/tintuc/{id?}/{ChuyenMuc?}', [HomeController::class,'SearchDetail_Tt'])->name('search_detail_tt');
 //end tin tức 
 //đổi mật khẩu 

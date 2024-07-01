@@ -8,7 +8,8 @@
           @if ($list)
               @method('PUT')
           @endif
-            <div class="container">
+           <div class="row">
+            <div class="col">
               <div class="form-group row">
                 <div class="col-12">
                     <input type="text" class="form-control" name="TieuDe" value="{{!empty($list)?$list->TieuDe:""}}" id="TieuDe" placeholder="Tiêu đề...">
@@ -25,7 +26,7 @@
                       <select name="IDCha" id="IDCha" class="form-control">
                           <option value="0" selected>--- Chuyên mục cha ---</option>
                           @foreach ($danhmucList as $item)
-                            <option value="{{$item->IDDanhMuc}}" {{(isset($list) && $list->IDDanhMuc == $item->IDDanhMuc )? 'selected' : ''}}>{{$item->TieuDe}}</option>
+                            <option value="{{$item->IDDanhMuc}}" {{(isset($list) && $list->IDCha == $item->IDDanhMuc )? 'selected' : ''}}>{{$item->TieuDe}}</option>
                           @endforeach
                       </select>
                   </div>
@@ -49,6 +50,22 @@
                   <button type="submit" class="btn btn-outline-success text-decoration-none">Lưu</button>
                   {{-- xem trước --}}
               </div>
+            </div>
+            @if (!empty($list))
+              @foreach (DB::table('danhmuc')->get() as $item)
+                  @if ((!empty($item->IDCha)) && ($item->IDCha == $list->IDDanhMuc))
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="exampleFormControlSelect2"><strong>Danh mục con</strong></label>
+                        <select multiple class="form-control" id="exampleFormControlSelect2">
+                          <option>{{$item->TieuDe}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  @endif
+              @endforeach
+            @endif
+           </div>
           </form>
           
       </div>

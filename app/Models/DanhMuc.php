@@ -13,6 +13,11 @@ class DanhMuc extends Model
     public function getDanhMuc(){
         return DB::table('DanhMuc')->orderBy('ThuTuHienThi', 'ASC')->get();
     }
+    public function getDanhMucCha($id){
+        return DB::table('DanhMuc')->where('IDDanhMuc', '<>', $id)
+                    ->where('IDCha', 0)
+                    ->orderBy('ThuTuHienThi', 'ASC')->get();
+    }
     
     public function AddDanhMuc($data)
     {

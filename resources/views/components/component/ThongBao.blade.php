@@ -25,23 +25,29 @@
          @if (isset($baiviet)&&$baiviet != null)
          <div style="font-size: 15px">{!!$baiviet->NoiDung!!}</div>
          @else
-           @foreach ($list as $item)
-           <div class="item" style="margin-top: 15px">
-             <i class="fa-regular fa-file-lines"></i>
-             <div class="content">
-                 <a class="text-decoration-none" href="{{ route('search_detail_tb', ['id'=>$item->IDTinTuc]) }}">
-                   {{$item->TieuDe}}</a>
-                 <div class="time" style="color: #333333"><img src="https://husc.edu.vn/images/icon-calendar.png" alt=""> {{$item->NgayTao}}</div>
-                 <div class="post-place">
-                   <small style="color: #333333" >Được đăng ở:&nbsp; <br>
-                     <a class="text-decoration-none" style="color: #333333; font-weight: 350" href="">
-                       {{$item->IDDanhMuc}}
-                     </a>
-                   </small></div>
-                   <hr style="margin: 10px 0; background-color: #aca9a9">
-                 </div>  
-               </div>
-           @endforeach
+           @if (!($list->isEmpty()))
+            @foreach ($list as $item)
+             <div class="item" style="margin-top: 15px">
+               <i class="fa-regular fa-file-lines"></i>
+               <div class="content">
+                   <a class="text-decoration-none" href="{{ route('search_detail_tb', ['id'=>$item->IDTinTuc]) }}">
+                     {{$item->TieuDe}}</a>
+                   <div class="time" style="color: #333333"><img src="https://husc.edu.vn/images/icon-calendar.png" alt=""> {{$item->NgayTao}}</div>
+                   <div class="post-place">
+                     <small style="color: #333333" >Được đăng ở:&nbsp; <br>
+                       <a class="text-decoration-none" style="color: #333333; font-weight: 350" href="">
+                         {{$item->IDDanhMuc}}
+                       </a>
+                     </small></div>
+                     <hr style="margin: 10px 0; background-color: #aca9a9">
+                   </div>  
+                 </div>
+             @endforeach
+           @else
+             <div class="alert alert-danger" style="text-align: center;font-size: 20px; margin-top: 10px;font-weight: 600" role="alert">
+              Không có tin phù hợp!
+              </div>
+           @endif
          @endif
       </div>
       </div>
@@ -58,6 +64,7 @@
         </p>
       </div>
     @else
+    @if (isset($list))
       <nav aria-label="Page navigation example" class="pag">
         <ul class="pagination">
           <li class="page-item">
@@ -77,6 +84,7 @@
           </li>
         </ul>
       </nav>
+    @endif
     @endif
   </div>
 @endsection
