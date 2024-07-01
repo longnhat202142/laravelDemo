@@ -36,12 +36,17 @@
                               <hr>
                               <span>{{Auth::user()->email}}</span>
                               <hr>
-                              <a href="{{ route('admin.logout') }}" class="nav-link text-decoration-none" style="color: #333333; margin-left: 5px"
-                              onclick="event.preventDefault();
-                                                       document.getElementById('logout-form').submit();"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
+                              <a href="{{ route('admin.change_pass') }}" class="nav-link text-decoration-none" style="color: #333333; margin-left: 5px"
+                              ><i class="fa-regular fa-pen-to-square"></i> Đổi mật khẩu </a>
+                              
                               <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                                 @csrf
                               </form>
+                              <hr>
+                              <a href="{{ route('admin.logout') }}" class="nav-link text-decoration-none" style="color: #333333; margin-left: 5px"
+                              onclick="event.preventDefault();
+                                                       document.getElementById('logout-form').submit();"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
+                              
                               </div>
                             </ul>
                         </div>

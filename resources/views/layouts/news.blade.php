@@ -37,7 +37,7 @@
           </div>
           {{-- end qc --}}
           </div>
-    <x-component.Video/>
+    <!-- <x-component.Video/> -->
     <x-component.MoTa/>
     <x-component.ads/>
     <x-component.footer/>

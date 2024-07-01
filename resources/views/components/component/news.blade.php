@@ -20,7 +20,7 @@
          {{-- khung tin --}}
          <div class="row">
           @foreach (DB::table('tintuc')->where('IDLoai','2')->where('TrangThai', '1')->orderBy('NgayTao','DESC')->take(6)->get() as $item)
-            <div class="col" style="width: 30%; margin: 0 15px">
+            <div class="col-4" style="width: 30%; margin: 0 15px">
               <a href="{{ route('search_detail_tt', ['id'=>$item->IDTinTuc]) }}">
                 <img class="border border-0 rounded-2"  src="{{!empty($item->Anh) ? asset('public/storage/AnhDaiDien/'.$item->Anh) : 'https://duonganh.com.vn/en/admin/assets/images/404.png' }}" alt="" style="max-width: 320px;; width: 320px; height: 200px;">
               </a>
@@ -49,7 +49,7 @@
                 </div>
               </div>
               @endforeach
-        </div>
+        </di>
          {{-- end khung tin --}}
       </div>
    </div>
